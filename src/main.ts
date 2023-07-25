@@ -32,6 +32,6 @@ bootstrap();
  * bot listeners
  */
 bot.start((ctx) => {
-  if (ctx.from.is_premium) return ctx.reply(`У нас тут богатых не любят`);
-  else ctx.reply(`Привет, ${ctx.from.first_name + ctx.from.last_name}`);
+  ctx.reply(`Привет, ${ctx.from.first_name}`);
+  console.log(ctx.chat, '\n', ctx.from.is_bot);
 });
