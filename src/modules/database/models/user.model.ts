@@ -3,6 +3,7 @@ import {
   Column,
   DataType,
   Default,
+  HasMany,
   Model,
   PrimaryKey,
   Table,
@@ -23,7 +24,6 @@ export class User extends Model<UserCreateInput> {
   @Default({ defaultValue: false })
   @Column(DataType.BOOLEAN)
   ban_status: boolean;
-  @Default(DataType.NOW)
-  @Column(DataType.DATE)
-  created_at: Date;
+  @HasMany(() => ActionLog)
+  logs: HasManyAttribute<>
 }
