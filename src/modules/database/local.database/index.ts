@@ -1,7 +1,8 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { User } from '../models/user.model';
-import { models } from '../models';
+import { User } from './models/user.model';
+import { models } from './models';
+import { LocalDatabaseSeed } from '../seed';
 
 @Module({
   imports: [
@@ -13,5 +14,6 @@ import { models } from '../models';
     }),
     SequelizeModule.forFeature([User], 'local'),
   ],
+  providers: [LocalDatabaseSeed],
 })
 export default class LocalDatabase {}

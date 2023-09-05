@@ -3,12 +3,11 @@ import {
   Column,
   DataType,
   Default,
-  HasMany,
   Model,
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
-import { UserCreateInput } from '../../../pages/user/user.input';
+import { UserCreateInput } from '../../../../pages/user/user.input';
 @Table({ tableName: 'User' })
 export class User extends Model<UserCreateInput> {
   @AutoIncrement
@@ -24,6 +23,4 @@ export class User extends Model<UserCreateInput> {
   @Default({ defaultValue: false })
   @Column(DataType.BOOLEAN)
   ban_status: boolean;
-  @HasMany(() => ActionLog)
-  logs: HasManyAttribute<>
 }

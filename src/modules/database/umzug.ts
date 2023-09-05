@@ -1,20 +1,14 @@
 import path from 'path';
-import { DataTypes, Sequelize } from 'sequelize';
+import { DataTypes } from 'sequelize';
+import { Sequelize } from 'sequelize-typescript';
 import { SequelizeStorage, Umzug } from 'umzug';
-
 export default function createUmzug(
   seq: Sequelize,
   mig: string,
   name?: string,
 ) {
-  /**
-   * path.relative - можно указать путь к файлу основываясь на текущей директории
-   * replace заменяет символы
-   */
   const dir = path.relative('', mig).replaceAll('\\', '/') + '/*.js';
-  console.log(dir);
   return new Umzug({
-    logger: console,
     context: seq.getQueryInterface(),
     migrations: {
       glob: dir,
@@ -23,7 +17,7 @@ export default function createUmzug(
       sequelize: seq,
       tableName: name,
       model: seq.define(
-        name || 'SequelizeMeta',
+        name || 'SeqelizeMeta',
         {
           name: {
             type: DataTypes.STRING,
@@ -35,5 +29,6 @@ export default function createUmzug(
         { timestamps: false },
       ),
     }),
+    logger: console,
   });
 }

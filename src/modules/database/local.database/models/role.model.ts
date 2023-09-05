@@ -2,7 +2,6 @@ import {
   InferAttributes,
   InferCreationAttributes,
   CreationOptional,
-  NonAttribute,
   BelongsTo,
 } from 'sequelize';
 import {
@@ -36,5 +35,5 @@ export class Role extends Model<
   @Column(DataType.STRING)
   title: string;
   @BelongsToMany(() => User, () => User_Role)
-  Users?: BelongsTo<NonAttribute<Array<User & { User_Role: User_Role }>>>;
+  Users?: BelongsTo<User, User_Role>;
 }

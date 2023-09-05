@@ -2,8 +2,9 @@ import { InjectConnection, InjectModel } from '@nestjs/sequelize';
 import { join } from 'path';
 import { Sequelize } from 'sequelize';
 import createUmzug from './umzug';
-import { User } from './models/user.model';
-
+import { User } from './local.database/models/user.model';
+import { Injectable } from '@nestjs/common';
+@Injectable()
 export class LocalDatabaseSeed {
   constructor(
     @InjectConnection('local') private sequelize: Sequelize,
