@@ -1,15 +1,10 @@
-import { InjectConnection, InjectModel } from '@nestjs/sequelize';
+import { InjectConnection } from '@nestjs/sequelize';
 import { join } from 'path';
-import { Sequelize } from 'sequelize';
 import createUmzug from './umzug';
-import { User } from './local.database/models/user.model';
-import { Injectable } from '@nestjs/common';
-@Injectable()
+import { Sequelize } from 'sequelize-typescript';
+
 export class LocalDatabaseSeed {
-  constructor(
-    @InjectConnection('local') private sequelize: Sequelize,
-    @InjectModel(User, 'local') private readonly modelUser: typeof User,
-  ) {}
+  constructor(@InjectConnection('local') private sequelize: Sequelize) {}
   async sync() {
     const umzug = createUmzug(
       this.sequelize,

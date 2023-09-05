@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { UserController } from './user.controller';
-import { UserCreateInput } from './user.input';
 import { UserService } from './user.service';
+import { SequelizeModule } from '@nestjs/sequelize';
+import { User } from '../../modules/database/local.database/models/user.model';
 
 @Module({
-  imports: [UserCreateInput],
+  imports: [SequelizeModule.forFeature([User], 'local')],
   controllers: [UserController],
   providers: [UserService],
 })

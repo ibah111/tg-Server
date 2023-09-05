@@ -16,7 +16,7 @@ import {
   Unique,
 } from 'sequelize-typescript';
 import { User } from './user.model';
-import { User_Role } from './user_role';
+import { User_Role } from './user.role';
 
 @Table({ tableName: 'Roles' })
 export class Role extends Model<

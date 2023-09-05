@@ -1,9 +1,9 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { getSwaggerCustomOptions, getSwaggerOptions } from './utils/swagger';
-import { bot } from './comfigs/bot';
 import { LocalDatabaseSeed } from './modules/database/seed';
 import { AppModule } from './app.module';
+import { bot } from './configs/bot';
 
 async function bootstrap() {
   /**
@@ -26,15 +26,11 @@ async function bootstrap() {
   await app.get(LocalDatabaseSeed).sync();
   await app.listen(443, '0.0.0.0');
   console.log(`Server running on ${await app.getUrl()}/docs`);
-  bot.launch();
   console.log(`Bot launched`);
+  bot.launch();
 }
 bootstrap();
 
-/**
- * bot listeners
- */
 bot.start((ctx) => {
-  ctx.reply(`Привет, ${ctx.from.first_name}`);
-  console.log(ctx.chat, '\n', ctx.from.is_bot);
+  ctx.reply('dadada');
 });

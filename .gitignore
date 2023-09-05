@@ -40,3 +40,4 @@ config
 .env
 src/configs/bot.ts
 .yarn
+database.sqlite
