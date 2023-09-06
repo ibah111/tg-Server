@@ -7,9 +7,9 @@ import {
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
-import { UserCreateInput } from '../../../../pages/user/user.input';
+
 @Table({ tableName: 'User' })
-export class User extends Model<UserCreateInput> {
+export class User extends Model {
   @AutoIncrement
   @PrimaryKey
   @Column(DataType.NUMBER)

@@ -27,10 +27,5 @@ async function bootstrap() {
   await app.listen(443, '0.0.0.0');
   console.log(`Server running on ${await app.getUrl()}/docs`);
   console.log(`Bot launched`);
-  bot.launch();
 }
 bootstrap();
-
-bot.start((ctx) => {
-  ctx.reply('dadada');
-});
