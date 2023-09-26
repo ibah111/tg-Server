@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { UserCreateInput } from './user.input';
-import { bot } from '../../configs/bot';
 import { InjectModel } from '@nestjs/sequelize';
 import { User } from '../../modules/database/local.database/models/user.model';
+import { bot } from '../../main';
 
 @Injectable()
 export class UserService {

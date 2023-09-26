@@ -2,16 +2,18 @@ import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { User } from '../database/local.database/models/user.model';
 import { BotService } from './bot.service';
-import { token } from '../../configs/bot';
 import { TelegrafModule } from 'nestjs-telegraf';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
     SequelizeModule.forFeature([User], 'local'),
     TelegrafModule.forRootAsync({
-      useFactory: () => ({
-        token: token,
+      imports: [ConfigModule],
+      useFactory: (config: ConfigService) => ({
+        token: config.get<string>('bot.token'),
       }),
+      inject: [ConfigService],
     }),
   ],
   providers: [BotService],

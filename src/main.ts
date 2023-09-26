@@ -3,7 +3,9 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { getSwaggerCustomOptions, getSwaggerOptions } from './utils/swagger';
 import { LocalDatabaseSeed } from './modules/database/seed';
 import { AppModule } from './app.module';
-import { bot } from './configs/bot';
+import { Telegraf } from 'telegraf';
+
+export const bot = new Telegraf(process.env.BOT_TOKEN);
 
 async function bootstrap() {
   /**
