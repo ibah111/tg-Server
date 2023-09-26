@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { getSwaggerCustomOptions, getSwaggerOptions } from './utils/swagger';
-import { LocalDatabaseSeed } from './modules/database/seed';
+import { LocalDatabaseSeed } from './modules/database/local.database/seed';
 import { AppModule } from './app.module';
 import { Telegraf } from 'telegraf';
 

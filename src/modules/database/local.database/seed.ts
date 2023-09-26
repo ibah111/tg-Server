@@ -1,10 +1,12 @@
 import { InjectConnection } from '@nestjs/sequelize';
 import { join } from 'path';
-import createUmzug from './umzug';
+import createUmzug from '../umzug';
 import { Sequelize } from 'sequelize-typescript';
 
 export class LocalDatabaseSeed {
-  constructor(@InjectConnection('local') private sequelize: Sequelize) {}
+  constructor(
+    @InjectConnection('local') private readonly sequelize: Sequelize,
+  ) {}
   async sync() {
     const umzug = createUmzug(
       this.sequelize,
@@ -14,6 +16,7 @@ export class LocalDatabaseSeed {
     try {
       await this.sequelize.authenticate();
       await umzug.up();
+      await this.seed();
     } catch (error) {
       console.log(error);
       throw error;
@@ -29,11 +32,6 @@ export class LocalDatabaseSeed {
       join(__dirname, 'seeds'), // директория
       'SeedMeta', // название таблицы - как МетаМиграции
     );
-    try {
-      await umzug.up();
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
+    await umzug.up();
   }
 }

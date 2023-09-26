@@ -2,20 +2,16 @@ import path from 'path';
 import { DataTypes } from 'sequelize';
 import { Sequelize } from 'sequelize-typescript';
 import { SequelizeStorage, Umzug } from 'umzug';
-
 export default function createUmzug(
   seq: Sequelize,
   mig: string,
   name?: string,
 ) {
-  /**
-   * @todo после relative был replaceAll
-   */
-  const direction = path.relative('', mig);
+  const dir = path.relative('', mig).replaceAll('\\', '/') + '/*.js';
   return new Umzug({
-    logger: console,
+    context: seq.getQueryInterface(),
     migrations: {
-      glob: direction,
+      glob: dir,
     },
     storage: new SequelizeStorage({
       sequelize: seq,
@@ -33,5 +29,6 @@ export default function createUmzug(
         { timestamps: false },
       ),
     }),
+    logger: console,
   });
 }

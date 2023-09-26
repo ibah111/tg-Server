@@ -16,7 +16,7 @@ import {
   InferAttributes,
   InferCreationAttributes,
 } from 'sequelize';
-@Table({ tableName: 'user' })
+@Table({ tableName: 'user', timestamps: false })
 export class User_Role extends Model<
   InferAttributes<User_Role>,
   InferCreationAttributes<User_Role>

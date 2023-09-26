@@ -18,7 +18,7 @@ import {
 import { User } from './user.model';
 import { User_Role } from './user.role';
 
-@Table({ tableName: 'Roles' })
+@Table({ tableName: 'Roles', timestamps: false })
 export class Role extends Model<
   InferAttributes<Role>,
   InferCreationAttributes<Role>
