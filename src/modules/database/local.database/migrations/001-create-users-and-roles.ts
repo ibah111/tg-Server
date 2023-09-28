@@ -38,16 +38,6 @@ export const up: MigrationFn<QueryInterface> = async ({ context }) =>
           },
           name: { type: DataTypes.STRING, allowNull: false, unique: true },
           title: { type: DataTypes.STRING, allowNull: false },
-          createdAt: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: DataTypes.NOW,
-          },
-          updatedAt: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            defaultValue: DataTypes.NOW,
-          },
         },
         { transaction: t },
       ),

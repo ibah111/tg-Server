@@ -9,18 +9,11 @@ import {
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
-import { Role } from './Role.model';
+import { Roles } from './Role.model';
 import { User } from './User.model';
-import {
-  CreationOptional,
-  InferAttributes,
-  InferCreationAttributes,
-} from 'sequelize';
+import { CreationOptional } from 'sequelize';
 @Table({ tableName: 'user', timestamps: false })
-export class User_Role extends Model<
-  InferAttributes<User_Role>,
-  InferCreationAttributes<User_Role>
-> {
+export class User_Role extends Model {
   @AutoIncrement
   @PrimaryKey
   @Column(DataType.INTEGER)
@@ -31,10 +24,10 @@ export class User_Role extends Model<
   user_id: number;
   @BelongsTo(() => User)
   User?: User;
-  @ForeignKey(() => Role)
+  @ForeignKey(() => Roles)
   @AllowNull(false)
   @Column(DataType.INTEGER)
   role_id: number;
-  @BelongsTo(() => Role)
-  Role?: Role;
+  @BelongsTo(() => Roles)
+  Role?: Roles;
 }

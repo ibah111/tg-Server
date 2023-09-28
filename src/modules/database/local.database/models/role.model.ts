@@ -15,13 +15,13 @@ import {
   Table,
   Unique,
 } from 'sequelize-typescript';
-import { User } from './user.model';
-import { User_Role } from './user.role';
+import { User } from './User.model';
+import { User_Role } from './User_Role';
 
 @Table({ tableName: 'Roles', timestamps: false })
-export class Role extends Model<
-  InferAttributes<Role>,
-  InferCreationAttributes<Role>
+export class Roles extends Model<
+  InferAttributes<Roles>,
+  InferCreationAttributes<Roles>
 > {
   @AutoIncrement
   @PrimaryKey

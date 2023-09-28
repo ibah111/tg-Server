@@ -1,7 +1,5 @@
 import {
   Model,
-  InferAttributes,
-  InferCreationAttributes,
   CreationOptional,
   NonAttribute,
   ForeignKey as FK,
@@ -25,10 +23,7 @@ export enum Actions {
   Registred = 1,
 }
 @Table({ tableName: 'ActionLogs' })
-export class ActionLog extends Model<
-  InferAttributes<ActionLog>,
-  InferCreationAttributes<ActionLog>
-> {
+export class ActionLog extends Model {
   /**
    * ID действия
    */

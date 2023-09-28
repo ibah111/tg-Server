@@ -1,10 +1,10 @@
 import { QueryInterface } from 'sequelize';
 import { MigrationFn } from 'umzug';
 
-export const up: MigrationFn<QueryInterface> = ({ context }) =>
-  context.sequelize.transaction((t) =>
+export const up: MigrationFn<QueryInterface> = async ({ context }) =>
+  await context.sequelize.transaction((t) =>
     Promise.all([
-      context.sequelize.models.Role.bulkCreate(
+      context.sequelize.models.Roles.bulkCreate(
         [
           { id: 1, name: 'creator', title: 'Создатель' },
           { id: 2, name: 'developer', title: 'Разработчик' },
