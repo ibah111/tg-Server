@@ -1,3 +1,9 @@
+import { IsString } from 'class-validator';
+import {
+  CreationOptional,
+  InferAttributes,
+  InferCreationAttributes,
+} from 'sequelize';
 import {
   AutoIncrement,
   Column,
@@ -8,17 +14,18 @@ import {
   Table,
 } from 'sequelize-typescript';
 
-@Table({ tableName: 'User' })
-export class User extends Model {
+@Table({ tableName: 'Users' })
+export class User extends Model<
+  InferAttributes<User>,
+  InferCreationAttributes<User>
+> {
   @AutoIncrement
   @PrimaryKey
-  @Column(DataType.NUMBER)
-  id: number;
+  @Column(DataType.INTEGER)
+  id: CreationOptional<number>;
   @Column(DataType.NUMBER)
   id_telegram: number;
-  @Column(DataType.STRING)
-  first_name: string;
-  @Column(DataType.STRING)
+  @IsString()
   username: string;
   @Default({ defaultValue: false })
   @Column(DataType.BOOLEAN)

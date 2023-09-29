@@ -1,37 +1,31 @@
-import { Injectable } from '@nestjs/common';
+/* eslint-disable prettier/prettier */
 import { InjectModel } from '@nestjs/sequelize';
-import { User } from '../../modules/database/local.database/models/User.model';
-import { bot } from '../../main';
+import { User } from 'src/modules/database/local.database/models/User.model';
+import { Context } from 'telegraf';
 
-@Injectable()
 export class UserService {
   constructor(
     @InjectModel(User, 'local')
     private readonly modelUser: typeof User,
   ) {}
-  createUserOnStart() {
-    bot.start(async (ctx) => {
-      const user = await this.modelUser.findOne({
-        where: {
-          username: ctx.from.username,
-        },
-      });
-      if (user)
-        ctx.reply(
-          `Привет, ${ctx.from.username}, мы уже знакомы поэтому ты зарегистрирован`,
-        );
-      if (!user)
-        return await this.modelUser.create(
-          {
-            ban_status: false,
-            first_name: ctx.from.first_name,
-            username: ctx.from.username,
-            id_telegram: ctx.from.id,
-          },
-          {
-            logging: console.log,
-          },
-        );
+  async start(ctx: Context) {
+    const user = await this.modelUser.findOne({
+      where: {
+        id_telegram: ctx.from.id,
+      },
     });
+    if (!user) {
+      ctx.reply(`Я тебя не знаю, давай знакомиться ${ctx.from.first_name}`);
+      try {
+        await this.modelUser.create({
+          id_telegram: ctx.from.id,
+          username: ctx.from.username,
+          ban_status: false,
+        });
+      } catch (error) {
+        console.log(error);
+        throw Error;
+      }
+    }
   }
 }

@@ -13,7 +13,18 @@ export const up: MigrationFn<QueryInterface> = async ({ context }) =>
             primaryKey: true,
             autoIncrement: true,
           },
-          login: { type: DataTypes.STRING, unique: true, allowNull: false },
+          id_telegram: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+          },
+          username: {
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
+          ban_status: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+          },
           createdAt: {
             type: DataTypes.DATE,
             allowNull: false,

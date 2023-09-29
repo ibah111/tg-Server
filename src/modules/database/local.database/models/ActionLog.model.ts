@@ -4,6 +4,8 @@ import {
   NonAttribute,
   ForeignKey as FK,
   BelongsTo,
+  InferAttributes,
+  InferCreationAttributes,
 } from 'sequelize';
 import {
   Table,
@@ -23,7 +25,10 @@ export enum Actions {
   Registred = 1,
 }
 @Table({ tableName: 'ActionLogs' })
-export class ActionLog extends Model {
+export class ActionLog extends Model<
+  InferAttributes<ActionLog>,
+  InferCreationAttributes<ActionLog>
+> {
   /**
    * ID действия
    */

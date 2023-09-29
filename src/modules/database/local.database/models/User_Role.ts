@@ -11,9 +11,16 @@ import {
 } from 'sequelize-typescript';
 import { Roles } from './Role.model';
 import { User } from './User.model';
-import { CreationOptional } from 'sequelize';
+import {
+  CreationOptional,
+  InferAttributes,
+  InferCreationAttributes,
+} from 'sequelize';
 @Table({ tableName: 'user', timestamps: false })
-export class User_Role extends Model {
+export class User_Role extends Model<
+  InferAttributes<User_Role>,
+  InferCreationAttributes<User_Role>
+> {
   @AutoIncrement
   @PrimaryKey
   @Column(DataType.INTEGER)
