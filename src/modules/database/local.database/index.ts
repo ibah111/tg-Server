@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { models } from './models';
 import { LocalDatabaseSeed } from './seed';
-import { User } from './models/User.model';
+import { Users } from './models/User.model';
 
 @Module({
   imports: [
@@ -12,7 +12,7 @@ import { User } from './models/User.model';
       storage: 'database.sqlite',
       models,
     }),
-    SequelizeModule.forFeature([User], 'local'),
+    SequelizeModule.forFeature([Users], 'local'),
   ],
   providers: [LocalDatabaseSeed],
 })

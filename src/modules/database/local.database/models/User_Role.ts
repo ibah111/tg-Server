@@ -10,7 +10,7 @@ import {
   Table,
 } from 'sequelize-typescript';
 import { Roles } from './Role.model';
-import { User } from './User.model';
+import { Users } from './User.model';
 import {
   CreationOptional,
   InferAttributes,
@@ -25,12 +25,12 @@ export class User_Role extends Model<
   @PrimaryKey
   @Column(DataType.INTEGER)
   id: CreationOptional<number>;
-  @ForeignKey(() => User)
+  @ForeignKey(() => Users)
   @AllowNull(false)
   @Column(DataType.INTEGER)
   user_id: number;
-  @BelongsTo(() => User)
-  User?: User;
+  @BelongsTo(() => Users)
+  User?: Users;
   @ForeignKey(() => Roles)
   @AllowNull(false)
   @Column(DataType.INTEGER)

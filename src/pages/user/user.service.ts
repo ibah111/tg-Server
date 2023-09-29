@@ -1,14 +1,14 @@
 /* eslint-disable prettier/prettier */
 import { InjectModel } from '@nestjs/sequelize';
-import { User } from 'src/modules/database/local.database/models/User.model';
+import { Users } from 'src/modules/database/local.database/models/User.model';
 import { Context } from 'telegraf';
 
 export class UserService {
   constructor(
-    @InjectModel(User, 'local')
-    private readonly modelUser: typeof User,
+    @InjectModel(Users, 'local')
+    private readonly modelUser: typeof Users,
   ) {}
-  async start(ctx: Context) {
+  async start(ctx: Context, {}) {
     const user = await this.modelUser.findOne({
       where: {
         id_telegram: ctx.from.id,
@@ -17,11 +17,13 @@ export class UserService {
     if (!user) {
       ctx.reply(`Я тебя не знаю, давай знакомиться ${ctx.from.first_name}`);
       try {
-        await this.modelUser.create({
-          id_telegram: ctx.from.id,
-          username: ctx.from.username,
-          ban_status: false,
-        });
+        const {} = {};
+        await this.modelUser.create(
+          {},
+          {
+            logging: console.log,
+          },
+        );
       } catch (error) {
         console.log(error);
         throw Error;

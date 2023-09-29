@@ -16,7 +16,7 @@ import {
   AllowNull,
   ForeignKey,
 } from 'sequelize-typescript';
-import { User } from './User.model';
+import { Users } from './User.model';
 
 export enum Actions {
   /**
@@ -66,9 +66,9 @@ export class ActionLog extends Model<
   /**
    * Имя пользователя совершившего действие
    */
-  @ForeignKey(() => User)
+  @ForeignKey(() => Users)
   @AllowNull(false)
   @Column(DataType.INTEGER)
   user: number;
-  User?: BelongsTo<NonAttribute<User>>;
+  User?: BelongsTo<NonAttribute<Users>>;
 }

@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { User } from '../../modules/database/local.database/models/User.model';
 import { GreeterUpdate } from './User.update';
 import { UserService } from './User.service';
+import { Users } from 'src/modules/database/local.database/models/User.model';
 
 @Module({
-  imports: [SequelizeModule.forFeature([User], 'local')],
+  imports: [SequelizeModule.forFeature([Users], 'local')],
   providers: [GreeterUpdate, UserService],
 })
 export class UserModule {}

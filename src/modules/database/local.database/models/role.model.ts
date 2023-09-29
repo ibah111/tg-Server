@@ -15,7 +15,7 @@ import {
   Table,
   Unique,
 } from 'sequelize-typescript';
-import { User } from './User.model';
+import { Users } from './User.model';
 import { User_Role } from './User_Role';
 
 @Table({ tableName: 'Roles', timestamps: false })
@@ -34,6 +34,6 @@ export class Roles extends Model<
   @AllowNull(false)
   @Column(DataType.STRING)
   title: string;
-  @BelongsToMany(() => User, () => User_Role)
-  Users?: BelongsTo<User, User_Role>;
+  @BelongsToMany(() => Users, () => User_Role)
+  Users?: BelongsTo<Users, User_Role>;
 }
