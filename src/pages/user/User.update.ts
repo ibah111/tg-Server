@@ -30,12 +30,12 @@ export class GreeterUpdate {
   /**
    *
    */
-  @Command('tagAll')
+  @Command('tagall')
   tagAll(@Ctx() ctx: Context) {
     return this.service.tagAll(ctx);
   }
 
-  @Command('gitHub')
+  @Command('github')
   shareGitHub(@Ctx() ctx: Context) {
     return this.service.shareGitHub(ctx);
   }
