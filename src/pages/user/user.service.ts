@@ -58,7 +58,6 @@ export class UserService {
           ban_status: true,
         });
         ctx.reply('Пытался убить меня, дурила?\nОтныне ты в бане ушлепок!');
-        ctx.replyWithSticker('');
       });
   }
   /**
@@ -67,11 +66,17 @@ export class UserService {
    * @returns
    */
   async tagAll(ctx: TelegrafContext) {
-    return await this.modelUser.findAll().then((users) => {
-      for (const user of users) {
-        ctx.reply(`@${user.username}`);
-      }
-    });
+    if (ctx.message.chat.type !== 'private')
+      return await this.modelUser.findAll().then((users) => {
+        ctx.reply('ПРОСЫПАЕМСЯ РЕБЯТУЛЬКИ!!!');
+        for (const user of users) {
+          ctx.reply(`@${user.username}`);
+        }
+      });
+    else if (ctx.message.chat.type === 'private')
+      ctx.reply(
+        'Вы не можете тегнуть пользователей чата в личном диалоге с ботом.',
+      );
   }
 
   shareGitHub(ctx: TelegrafContext) {
