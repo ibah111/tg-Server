@@ -23,10 +23,22 @@ export class GreeterUpdate {
    * @returns банит чела
    */
   @Command('kill')
-  async killAttempt(@Ctx() ctx: Context) {
+  killAttempt(@Ctx() ctx: Context) {
     return this.service.killAttempt(ctx);
   }
 
+  /**
+   *
+   */
+  @Command('tagAll')
+  tagAll(@Ctx() ctx: Context) {
+    return this.service.tagAll(ctx);
+  }
+
+  @Command('gitHub')
+  shareGitHub(@Ctx() ctx: Context) {
+    return this.service.shareGitHub(ctx);
+  }
   /**
    * Дефолтный hears, оставлю на будущее
    * @param firstName

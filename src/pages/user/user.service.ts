@@ -1,14 +1,14 @@
 /* eslint-disable prettier/prettier */
 import { InjectModel } from '@nestjs/sequelize';
 import { Users } from 'src/modules/database/local.database/models/User.model';
-import { Context } from 'telegraf';
+import { Context as TelegrafContext } from 'telegraf';
 
 export class UserService {
   constructor(
     @InjectModel(Users, 'local')
     private readonly modelUser: typeof Users,
   ) {}
-  async start(ctx: Context) {
+  async start(ctx: TelegrafContext) {
     const user = await this.modelUser.findOne({
       where: {
         id_telegram: ctx.from.id,
@@ -19,6 +19,7 @@ export class UserService {
       await this.modelUser
         .create({
           id_telegram: ctx.message.from.id,
+          username: ctx.message.from.username,
           ban_status: false,
         })
         .then(async (data) => {
@@ -45,7 +46,7 @@ export class UserService {
     }
   }
 
-  async killAttempt(ctx: Context) {
+  async killAttempt(ctx: TelegrafContext) {
     return await this.modelUser
       .findOne({
         where: {
@@ -59,5 +60,21 @@ export class UserService {
         ctx.reply('Пытался убить меня, дурила?\nОтныне ты в бане ушлепок!');
         ctx.replyWithSticker('');
       });
+  }
+  /**
+   * TODO Доделать тег на конкретный чат/беседу
+   * @param ctx
+   * @returns
+   */
+  async tagAll(ctx: TelegrafContext) {
+    return await this.modelUser.findAll().then((users) => {
+      for (const user of users) {
+        ctx.reply(`@${user.username}`);
+      }
+    });
+  }
+
+  shareGitHub(ctx: TelegrafContext) {
+    ctx.reply('Cсылка на гитхаб: https://github.com/ibah111/Server');
   }
 }

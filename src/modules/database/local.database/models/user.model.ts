@@ -23,6 +23,8 @@ export class Users extends Model<
   id: CreationOptional<number>;
   @Column(DataType.NUMBER)
   id_telegram: number;
+  @Column(DataType.STRING)
+  username: string;
   @Column(DataType.BOOLEAN)
   ban_status: boolean;
 }
