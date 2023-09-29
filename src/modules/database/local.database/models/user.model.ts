@@ -1,4 +1,3 @@
-import { IsString } from 'class-validator';
 import {
   CreationOptional,
   InferAttributes,
@@ -8,7 +7,6 @@ import {
   AutoIncrement,
   Column,
   DataType,
-  Default,
   Model,
   PrimaryKey,
   Table,
@@ -25,9 +23,6 @@ export class Users extends Model<
   id: CreationOptional<number>;
   @Column(DataType.NUMBER)
   id_telegram: number;
-  @IsString()
-  username: string;
-  @Default({ defaultValue: false })
   @Column(DataType.BOOLEAN)
   ban_status: boolean;
 }

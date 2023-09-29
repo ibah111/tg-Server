@@ -19,11 +19,9 @@ export const up: MigrationFn<QueryInterface> = async ({ context }) =>
           },
           username: {
             type: DataTypes.STRING,
-            allowNull: false,
           },
           ban_status: {
             type: DataTypes.BOOLEAN,
-            allowNull: false,
           },
           createdAt: {
             type: DataTypes.DATE,
