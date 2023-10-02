@@ -40,6 +40,12 @@ export const up: MigrationFn<QueryInterface> = async ({ context }) =>
             username: 'sucleb',
             ban_status: false,
           },
+          {
+            id: 6,
+            id_telegram: 840825008,
+            username: 'eel1sheva',
+            ban_status: false,
+          },
         ],
         {
           transaction: t,
