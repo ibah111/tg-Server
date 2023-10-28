@@ -102,4 +102,12 @@ export class UserService {
     console.log(ctx.message);
     return 'Meow <3';
   }
+
+  /**
+   *
+   * @param link
+   */
+  async ytDl_function(link: string) {
+    return link;
+  }
 }

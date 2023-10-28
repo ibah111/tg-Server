@@ -4,7 +4,7 @@ import { getSwaggerCustomOptions, getSwaggerOptions } from './utils/swagger';
 import { LocalDatabaseSeed } from './modules/database/local.database/seed';
 import { AppModule } from './app.module';
 import { Telegraf } from 'telegraf';
-
+import 'colors';
 export const bot = new Telegraf(process.env.BOT_TOKEN);
 
 async function bootstrap() {

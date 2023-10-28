@@ -4,6 +4,10 @@ import { Users } from '../database/local.database/models/User.model';
 import { BotService } from './bot.service';
 import { TelegrafModule } from 'nestjs-telegraf';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { session } from 'telegraf';
+import { ScenesModule } from 'src/pages/scenes/scenes.module';
+
+const sessionMiddleWare = session();
 
 @Module({
   imports: [
@@ -12,6 +16,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
       imports: [ConfigModule],
       useFactory: (config: ConfigService) => ({
         token: config.get<string>('bot.token'),
+        middlewares: [sessionMiddleWare],
+        include: [ScenesModule],
       }),
       inject: [ConfigService],
     }),
