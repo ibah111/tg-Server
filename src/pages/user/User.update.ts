@@ -1,5 +1,13 @@
 /* eslint-disable prettier/prettier */
-import { Hears, Sender, Start, Update, Command, Ctx } from 'nestjs-telegraf';
+import {
+  Hears,
+  Sender,
+  Start,
+  Update,
+  Command,
+  Ctx,
+  On,
+} from 'nestjs-telegraf';
 import { Context } from 'src/interfaces/context.interface';
 import { UserService } from './User.service';
 export const HELLO_SCENE_ID = 'HELLO_SCENE_ID';
@@ -47,5 +55,10 @@ export class GreeterUpdate {
   @Hears(['hi', 'hello', 'hey', 'qq'])
   onGreetings(@Sender('first_name') firstName: string): string {
     return `Hey ${firstName}`;
+  }
+
+  @On('sticker')
+  onStickerSend(@Ctx() ctx: Context) {
+    return this.service.stickerAnswer(ctx);
   }
 }

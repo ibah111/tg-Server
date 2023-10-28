@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { InjectModel } from '@nestjs/sequelize';
+import { stickers } from 'src/json';
 import { Users } from 'src/modules/database/local.database/models/User.model';
 import { Context as TelegrafContext } from 'telegraf';
 
@@ -47,18 +48,28 @@ export class UserService {
   }
 
   async killAttempt(ctx: TelegrafContext) {
-    return await this.modelUser
-      .findOne({
-        where: {
-          id_telegram: ctx.from.id,
-        },
-      })
-      .then(async (user) => {
-        user.update({
-          ban_status: true,
-        });
-        ctx.reply('Пытался убить меня, дурила?\nОтныне ты в бане ушлепок!');
-      });
+    console.log(ctx.message, 'penis');
+    ctx
+      .replyWithSticker(
+        'CAACAgIAAxkBAAIDSWU9BR1Vgc93aLckexGxJP8UtUKUAAKaOAACcqvxSf-74b6QSDk7MAQ',
+      )
+      .then(
+        () => async () =>
+          await this.modelUser
+            .findOne({
+              where: {
+                id_telegram: ctx.from.id,
+              },
+            })
+            .then(async (user) => {
+              user.update({
+                ban_status: true,
+              });
+              ctx.reply(
+                'Пытался убить меня, дурила?\nОтныне ты в бане ушлепок!',
+              );
+            }),
+      );
   }
   /**
    * TODO Доделать тег на конкретный чат/беседу
@@ -81,5 +92,14 @@ export class UserService {
 
   shareGitHub(ctx: TelegrafContext) {
     ctx.reply('Cсылка на гитхаб: https://github.com/ibah111/Server');
+  }
+
+  async stickerAnswer(ctx: TelegrafContext) {
+    return (await ctx.replyWithSticker(stickers.box_cat)).sticker;
+  }
+
+  async unknownMessage(ctx: TelegrafContext) {
+    console.log(ctx.message);
+    return 'Meow <3';
   }
 }
