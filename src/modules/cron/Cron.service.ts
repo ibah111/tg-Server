@@ -19,9 +19,6 @@ export class CronService {
   constructor(private readonly reg: SchedulerRegistry) {}
   private readonly logger = new Logger(CronService.name);
 
-  /**
-   * @returns в дальнейшем данный метод должен будет перезаписывать соглашения согласно данным контакта
-   */
   @Cron(CronExpression.EVERY_10_MINUTES)
   handleCron() {
     const job = this.reg.getCronJob('TEst');
