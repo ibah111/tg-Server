@@ -16,6 +16,10 @@ const sessionMiddleWare = session();
       imports: [ConfigModule],
       useFactory: (config: ConfigService) => ({
         token: config.get<string>('bot.token'),
+        /**
+         * Чтобы бот работал, надо добавить мидлвэйр
+         * и модуль сцен
+         */
         middlewares: [sessionMiddleWare],
         include: [ScenesModule],
       }),
