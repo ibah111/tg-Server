@@ -8,10 +8,6 @@ import 'colors';
 export const bot = new Telegraf(process.env.BOT_TOKEN);
 
 async function bootstrap() {
-  /**
-   * app + swagger launch
-   * ожидает AppModule
-   */
   const app = await NestFactory.create(AppModule);
   const config = new DocumentBuilder()
     .setTitle('tg-bot-swagger')
@@ -26,7 +22,7 @@ async function bootstrap() {
   );
   SwaggerModule.setup('docs', app, document, getSwaggerCustomOptions());
   await app.get(LocalDatabaseSeed).sync();
-  await app.listen(443, '0.0.0.0');
+  await app.listen(3000, '0.0.0.0');
   console.log(`Server running on ${await app.getUrl()}/docs`);
   console.log(`Bot launched`);
 }
