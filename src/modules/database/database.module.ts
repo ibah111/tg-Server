@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import LocalDatabase from './local.database';
+import SqliteDatabase from './sqlite.database';
 
 @Module({
-  imports: [LocalDatabase],
+  imports: [SqliteDatabase],
 })
 export default class DatabaseModule {}

@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { UserModule } from './User/User.module';
-import IpModule from './ip/ip.module';
+import MinecraftModule from './minecraft/minecraft.module';
 
 @Module({
-  imports: [UserModule, IpModule],
+  imports: [UserModule, MinecraftModule],
 })
 export class PagesModule {}

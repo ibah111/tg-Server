@@ -3,7 +3,7 @@ import { join } from 'path';
 import createUmzug from '../umzug';
 import { Sequelize } from 'sequelize-typescript';
 
-export class LocalDatabaseSeed {
+export class SqliteDatabaseSeed {
   constructor(
     @InjectConnection('local') private readonly sequelize: Sequelize,
   ) {}

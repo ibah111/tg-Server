@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { InjectModel } from '@nestjs/sequelize';
 import { stickers } from 'src/json';
-import { Users } from 'src/modules/database/local.database/models/User.model';
+import { Users } from 'src/modules/database/sqlite.database/models/User.model';
 import { Context as TelegrafContext } from 'telegraf';
 
 export class UserService {
