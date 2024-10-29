@@ -12,7 +12,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('Telegram bot OpenAPI')
     .setDescription(
-      'Апи для получения тестирования и получения различной информации',
+      'Апи для получения тестирования и получения различной информации+',
     )
     .setVersion('1.0.0')
     .addTag('Cat-Bot-Requests')
