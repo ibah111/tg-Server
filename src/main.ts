@@ -25,5 +25,18 @@ async function bootstrap() {
   await app.listen(3000, '0.0.0.0');
   console.log(`Server running on ${await app.getUrl()}/docs`);
   console.log(`Bot launched`);
+
+  // Обработка сигналов завершения
+  process.on('SIGINT', async () => {
+    console.log('Received SIGINT signal');
+    await app.close();
+    process.exit(0);
+  });
+
+  process.on('SIGTERM', async () => {
+    console.log('Received SIGTERM signal');
+    await app.close();
+    process.exit(0);
+  });
 }
 bootstrap();
