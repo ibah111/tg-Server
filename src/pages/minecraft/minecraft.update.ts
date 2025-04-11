@@ -9,6 +9,7 @@ export default class MinecraftUpdate {
   @Command('getIp')
   async getIp(@Ctx() ctx: Context) {
     const data = await this.service.getMinecraftServerIp();
-    ctx.reply(`local: ${data.local_ip}:25565\npublic: ${data.public_ip}:25565`);
+    const reply_text = `domain: ${data.domain_connect}\nlocal: ${data.local_ip}`;
+    ctx.reply(reply_text);
   }
 }
