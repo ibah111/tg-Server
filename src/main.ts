@@ -3,9 +3,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { getSwaggerCustomOptions, getSwaggerOptions } from './utils/swagger';
 import { SqliteDatabaseSeed } from './modules/database/sqlite.database/seed';
 import { AppModule } from './app.module';
-import { Telegraf } from 'telegraf';
 import 'colors';
-export const bot = new Telegraf(process.env.BOT_TOKEN);
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
