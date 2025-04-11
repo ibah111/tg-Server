@@ -17,8 +17,8 @@ export class UserUpdate implements OnModuleInit, OnModuleDestroy {
   async onModuleInit() {
     const message_text = `Бот запущен! Время запуска: ${new Date().toLocaleString()}`;
     try {
-      await this.bot.telegram.sendMessage(ADMIN_ID, message_text);
-      await this.bot.telegram.sendMessage(SBORKA_CHAT_ID, message_text);
+      await this.bot.telegram.sendMessage(ADMIN_ID, message_text); // отправка сообщения в чат администратора
+      //await this.bot.telegram.sendMessage(SBORKA_CHAT_ID, message_text); <== отправляет в чат сборки
     } catch (error) {
       console.error('Error sending initial message:'.red, error);
     }
