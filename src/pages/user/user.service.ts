@@ -2,6 +2,7 @@
 import { InjectModel } from '@nestjs/sequelize';
 import { Users } from 'src/modules/database/sqlite.database/models/User.model';
 import { Context as TelegrafContext } from 'telegraf';
+import { Telegraf } from 'telegraf';
 
 export class UserService {
   constructor(
@@ -48,9 +49,5 @@ export class UserService {
 
   async messageAnswer(ctx: TelegrafContext) {
     const username = ctx.from.username;
-    if (username === 'ibah111') {
-      return ctx.reply('Meow <3');
-    }
-    console.log(ctx);
   }
 }
