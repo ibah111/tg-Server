@@ -1,5 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { InjectModel } from '@nestjs/sequelize';
+import { createReadStream } from 'fs';
+import { join } from 'path';
 import { Users } from 'src/modules/database/sqlite.database/models/User.model';
 import { Context as TelegrafContext } from 'telegraf';
 import { Telegraf } from 'telegraf';
@@ -46,8 +48,21 @@ export class UserService {
       }
     }
   }
-
+  private readonly fuckyouUsername: string[] = ['NewChatUser'];
   async messageAnswer(ctx: TelegrafContext) {
     const username = ctx.from.username;
+    if (this.fuckyouUsername.includes(username)) {
+      const filePath = join(__dirname, '../../../', 'assets', 'fuckyou.MOV');
+      console.log('filePath', filePath);
+      const fileStream = createReadStream(filePath);
+      ctx.replyWithAnimation(
+        {
+          source: fileStream,
+        },
+        {
+          caption: `${ctx.from.first_name} ${ctx.from.last_name}, пошёл нахуй!`,
+        },
+      );
+    }
   }
 }
