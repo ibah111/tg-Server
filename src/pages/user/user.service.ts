@@ -1,13 +1,15 @@
-/* eslint-disable prettier/prettier */
 import { InjectModel } from '@nestjs/sequelize';
 import { createReadStream } from 'fs';
+import { InjectBot } from 'nestjs-telegraf';
 import { join } from 'path';
 import { Users } from 'src/modules/database/sqlite.database/models/User.model';
 import { Context as TelegrafContext } from 'telegraf';
 import { Telegraf } from 'telegraf';
+import { ManualSendMessageDto } from './user.controller';
 
 export class UserService {
   constructor(
+    @InjectBot() private readonly bot: Telegraf,
     @InjectModel(Users, 'local')
     private readonly modelUser: typeof Users,
   ) {}
@@ -54,10 +56,12 @@ export class UserService {
   private readonly fuckyouId: number[] = [
     //400657207
   ];
-  async messageAnswer(ctx: TelegrafContext) {
+  async onText(ctx: TelegrafContext) {
     const username = ctx.from.username;
     const id = ctx.from.id;
-    console.log('username', ctx.from);
+    console.log('username', ctx);
+    console.log('ctx.from', ctx.from);
+    console.log('ctx.chat', ctx.chat);
     if (
       this.fuckyouUsername.includes(username) ||
       this.fuckyouId.includes(id)
@@ -77,5 +81,10 @@ export class UserService {
         },
       );
     }
+  }
+
+  async manualSendMessage(body: ManualSendMessageDto) {
+    const { id, message } = body;
+    await this.bot.telegram.sendMessage(id, message);
   }
 }

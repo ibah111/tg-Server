@@ -23,7 +23,7 @@ export class UserUpdate implements OnModuleInit, OnModuleDestroy {
       console.error('Error sending initial message:'.red, error);
     }
     this.bot.on('message', (ctx) => {
-      this.service.messageAnswer(ctx);
+      this.service.onText(ctx);
     });
   }
 
