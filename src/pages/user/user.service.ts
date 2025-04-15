@@ -48,18 +48,31 @@ export class UserService {
       }
     }
   }
-  private readonly fuckyouUsername: string[] = ['NewChatUser'];
+  private readonly fuckyouUsername: string[] = [
+    //  'NewChatUser'
+  ];
+  private readonly fuckyouId: number[] = [
+    //400657207
+  ];
   async messageAnswer(ctx: TelegrafContext) {
     const username = ctx.from.username;
-    if (this.fuckyouUsername.includes(username)) {
+    const id = ctx.from.id;
+    console.log('username', ctx.from);
+    if (
+      this.fuckyouUsername.includes(username) ||
+      this.fuckyouId.includes(id)
+    ) {
+      const message_id = ctx.message.message_id;
       const filePath = join(__dirname, '../../../', 'assets', 'fuckyou.MOV');
-      console.log('filePath', filePath);
       const fileStream = createReadStream(filePath);
       ctx.replyWithAnimation(
         {
           source: fileStream,
         },
         {
+          reply_parameters: {
+            message_id,
+          },
           caption: `${ctx.from.first_name} ${ctx.from.last_name}, пошёл нахуй!`,
         },
       );
