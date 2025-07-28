@@ -1,7 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { getSwaggerCustomOptions, getSwaggerOptions } from './utils/swagger';
-import { SqliteDatabaseSeed } from './modules/database/sqlite.database/seed';
+import { getSwaggerCustomOptions, getSwaggerOptions } from './shared/utils/swagger';
+import { SqliteDatabaseSeed } from './databases/sqlite.database/seed';
 import { AppModule } from './app.module';
 import 'colors';
 

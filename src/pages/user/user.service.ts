@@ -2,7 +2,7 @@ import { InjectModel } from '@nestjs/sequelize';
 import { createReadStream } from 'fs';
 import { InjectBot } from 'nestjs-telegraf';
 import { join } from 'path';
-import { Users } from 'src/modules/database/sqlite.database/models/User.model';
+import { Users } from 'src/databases/sqlite.database/models/User.model';
 import { Context as TelegrafContext } from 'telegraf';
 import { Telegraf } from 'telegraf';
 import { ManualSendMessageDto } from './user.controller';

@@ -3,7 +3,7 @@ import { ModuleOfModules } from './modules';
 import { PagesModule } from './pages/index.module';
 import { BotModule } from './modules/bot/bot.module';
 import { ConfigModule } from '@nestjs/config';
-import getConfig from './utils/getConfig';
+import getConfig from './shared/utils/getConfig';
 
 @Module({
   imports: [

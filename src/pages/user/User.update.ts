@@ -1,10 +1,10 @@
 import { Start, Update, Ctx } from 'nestjs-telegraf';
-import { Context } from 'src/interfaces/context.interface';
+import { Context } from 'src/shared/interfaces/context.interface';
 import { UserService } from './User.service';
 import { OnModuleDestroy, OnModuleInit } from '@nestjs/common';
 import { Telegraf } from 'telegraf';
 import { InjectBot } from 'nestjs-telegraf';
-import { ADMIN_ID, SBORKA_CHAT_ID } from 'src/consts/telegram_ids';
+import { ADMIN_ID, SBORKA_CHAT_ID } from 'src/shared/consts/telegram_ids';
 
 @Update()
 export class UserUpdate implements OnModuleInit, OnModuleDestroy {

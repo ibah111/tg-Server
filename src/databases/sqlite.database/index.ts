@@ -1,9 +1,10 @@
-import { Module } from '@nestjs/common';
+import { Global, Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { models } from './models';
 import { SqliteDatabaseSeed } from './seed';
 import { Users } from './models/User.model';
 
+@Global()
 @Module({
   imports: [
     SequelizeModule.forRoot({

@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TelegrafModule } from 'nestjs-telegraf';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { sessionMiddleWare } from 'src/utils/sessionMiddleware';
+import { sessionMiddleWare } from 'src/shared/utils/sessionMiddleware';
 import { UserUpdate } from 'src/pages/user/User.update';
 
 @Module({

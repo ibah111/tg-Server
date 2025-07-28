@@ -1,6 +1,6 @@
 import { IsBoolean, IsNumber, IsString } from 'class-validator';
 import { CreationAttributes } from 'sequelize';
-import { Users } from 'src/modules/database/sqlite.database/models/User.model';
+import { Users } from 'src/databases/sqlite.database/models/User.model';
 
 export class UserCreateInput implements CreationAttributes<Users> {
   @IsNumber()
