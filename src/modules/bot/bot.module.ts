@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TelegrafModule } from 'nestjs-telegraf';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { sessionMiddleWare } from 'src/shared/utils/sessionMiddleware';
-import { UserUpdate } from 'src/pages/user/User.update';
+import MinecraftUpdate from 'src/pages/minecraft/minecraft.update';
 
 @Module({
   imports: [
@@ -11,7 +11,7 @@ import { UserUpdate } from 'src/pages/user/User.update';
       useFactory: (config: ConfigService) => ({
         token: config.get<string>('bot.token'),
         middlewares: [sessionMiddleWare],
-        include: [UserUpdate],
+        include: [MinecraftUpdate],
       }),
       inject: [ConfigService],
     }),
