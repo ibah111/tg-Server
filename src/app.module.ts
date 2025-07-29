@@ -13,6 +13,7 @@ import getConfig from './shared/utils/getConfig';
     ConfigModule.forRoot({
       load: [getConfig],
       envFilePath: '.env',
+      isGlobal: true,
     }),
   ],
 })

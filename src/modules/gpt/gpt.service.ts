@@ -1,36 +1,47 @@
-import { Injectable, Logger } from '@nestjs/common';
-import OpenAI from 'openai';
+import {
+  Injectable,
+  InternalServerErrorException,
+  Logger,
+} from '@nestjs/common';
 import { GptDto } from './dto/gpt.dto';
+import { HttpService } from '@nestjs/axios';
+import { ConfigService } from '@nestjs/config';
+import { openai_instance } from 'src/shared/utils/request-instance';
 
 @Injectable()
 export class GptService {
   private readonly logger = new Logger(GptService.name);
+  private readonly apiKey: string;
 
-  constructor(private readonly openai: OpenAI) {}
+  constructor(
+    private readonly httpService: HttpService,
+    private readonly configService: ConfigService,
+  ) {
+    this.apiKey = this.configService.get<string>('OPENAI_API_KEY');
+  }
 
   async generateText(dto: GptDto) {
-    const { model, prompt } = dto;
+    const { prompt } = dto;
 
     try {
-      this.logger.log(`Generating text with model: ${model}`);
-
-      const response = await this.openai.chat.completions.create({
-        model,
-        messages: [{ role: 'user', content: prompt }],
-      });
-
-      this.logger.log('Text generated successfully');
-      return response.choices[0].message.content;
+      const url = '/chat/completions';
+      const response = await openai_instance.post(
+        url,
+        {
+          model: 'gpt-4o',
+          messages: [{ role: 'user', content: prompt }],
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${this.apiKey}`,
+            'Content-Type': 'application/json',
+          },
+        },
+      );
+      return response.data;
     } catch (error) {
-      this.logger.error(`Error generating text: ${error.message}`, error.stack);
-
-      if (error.status === 403) {
-        throw new Error(
-          'Access denied. Please check your API key and proxy configuration.',
-        );
-      }
-
-      throw error;
+      this.logger.error(error);
+      throw new InternalServerErrorException(error);
     }
   }
 }
