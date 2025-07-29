@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Users } from '../models/User.model';
+import { FindOptions } from 'sequelize';
 
 @Injectable()
 export default class UserRepository {
@@ -9,7 +10,13 @@ export default class UserRepository {
     return await this.modelUser.create(user);
   }
 
-  async findAll() {
-    return await this.modelUser.findAll();
+  async findAll(name?: string) {
+    const options: FindOptions = {};
+    if (name) {
+      options.where = {
+        username: name,
+      };
+    }
+    return await this.modelUser.findAll(options);
   }
 }

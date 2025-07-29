@@ -3,6 +3,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { models } from './models';
 import { SqliteDatabaseSeed } from './seed';
 import { Users } from './models/User.model';
+import UserRepository from './repository/user.repository';
 
 @Global()
 @Module({
@@ -15,6 +16,7 @@ import { Users } from './models/User.model';
     }),
     SequelizeModule.forFeature([Users], 'local'),
   ],
-  providers: [SqliteDatabaseSeed],
+  providers: [SqliteDatabaseSeed, UserRepository],
+  exports: [UserRepository],
 })
 export default class SqliteDatabase {}
