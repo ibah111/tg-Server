@@ -33,6 +33,7 @@
     "colors": "^1.4.0",
     "dotenv": "^16.4.5",
     "fastify": "^4.26.2",
+    "https-proxy-agent": "^7.0.6",
     "ip": "^2.0.1",
     "nestjs-openai": "^0.0.1",
     "nestjs-telegraf": "^2.7.0",
