@@ -9,6 +9,7 @@ import { AppModule } from './app.module';
 import 'colors';
 import { Logger } from '@nestjs/common';
 import { NODE_ENV } from './shared/consts/node-env';
+import { baseUrl } from './shared/utils/axios-instance';
 
 async function bootstrap() {
   const logger = new Logger(bootstrap.name);
@@ -20,7 +21,6 @@ async function bootstrap() {
       'Апи для получения тестирования и получения различной информации+',
     )
     .setVersion('1.0.0')
-    .addTag('Cat-Bot-Requests')
     .build();
   const document = SwaggerModule.createDocument(
     app,
@@ -32,12 +32,18 @@ async function bootstrap() {
   await app.listen(3000, '0.0.0.0');
   logger.debug(`Server running on ${await app.getUrl()}/docs`);
 
+  const ollamaUrl = baseUrl();
+
   switch (NODE_ENV) {
     case 'development':
-      logger.verbose(`Server running in development mode`);
+      logger.verbose(
+        `Server running in development mode, ollama url: ${ollamaUrl}`,
+      );
       break;
     case 'production':
-      logger.error(`Server running in production mode`);
+      logger.error(
+        `Server running in production mode, ollama url: ${ollamaUrl}`,
+      );
       break;
   }
 
