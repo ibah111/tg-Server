@@ -1,0 +1,52 @@
+# Зависимости
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Сборка
+dist
+build
+
+# Логи
+logs
+*.log
+
+# Временные файлы
+.tmp
+.temp
+
+# Git
+.git
+.gitignore
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+Dockerfile
+.dockerignore
+
+# Тесты
+coverage
+.nyc_output
+
+# Документация
+README.md
+*.md
+
+# Конфигурация разработки
+.env.example
+.env.local
+.env.development
+
+# Другие
+.yarn
+.yarnrc.yml

@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  tg-bot:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      # Монтируем базу данных для персистентности
+      - ./database.sqlite:/app/database.sqlite
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/docs"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
