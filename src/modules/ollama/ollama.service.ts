@@ -4,7 +4,7 @@ import {
   Logger,
   OnModuleInit,
 } from '@nestjs/common';
-import { OllamaGenerateDto } from './dto/gpt.dto';
+import { OllamaGenerateInput, OllamaGenerateOutput } from './dto/gpt.dto';
 import { ConfigService } from '@nestjs/config';
 import { ollamaInstance } from 'src/shared/utils/axios-instance';
 
@@ -39,7 +39,7 @@ export class OllamaService implements OnModuleInit {
     }
   }
 
-  async generate(dto: OllamaGenerateDto) {
+  async generate(dto: OllamaGenerateInput): Promise<OllamaGenerateOutput> {
     const { model, prompt, context, stream } = dto;
 
     try {

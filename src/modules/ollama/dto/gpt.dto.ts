@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-export class OllamaGenerateDto {
+export class OllamaGenerateInput {
   @ApiProperty({
     description: 'The model to use for text generation',
     example: 'llama3',
@@ -17,11 +17,26 @@ export class OllamaGenerateDto {
     description: 'The context to use for text generation',
     example: [1, 2, 3],
   })
-  context: number[];
+  context?: number[];
 
   @ApiProperty({
     description: 'Whether to stream the response',
     example: false,
   })
   stream: boolean;
+}
+
+export class OllamaGenerateOutput {
+  model: string;
+  created_at: Date;
+  response: string;
+  done: boolean;
+  done_reason: string;
+  context: number[];
+  total_duration: number;
+  load_duration: number;
+  prompt_eval_count: number;
+  prompt_eval_duration: number;
+  eval_count: number;
+  eval_duration: number;
 }

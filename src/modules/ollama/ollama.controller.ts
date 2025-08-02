@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { OllamaService } from './ollama.service';
-import { OllamaGenerateDto } from './dto/gpt.dto';
+import { OllamaGenerateInput } from './dto/gpt.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags('Ollama')
@@ -16,7 +16,7 @@ export class OllamaController {
 
   @ApiOperation({ summary: 'Generate text with model' })
   @Post('generate')
-  async generate(@Body() body: OllamaGenerateDto) {
+  async generate(@Body() body: OllamaGenerateInput) {
     return this.ollamaService.generate(body);
   }
 }
