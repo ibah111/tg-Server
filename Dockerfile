@@ -8,7 +8,13 @@ WORKDIR /app
 COPY package*.json ./
 COPY yarn.lock ./
 
+# Устанавливаем corepack
+RUN corepack enable
 
+# Устанавливаем corepack
+RUN yarn set version berry
+
+# Устанавливаем зависимости
 RUN yarn install
 
 # Копируем исходный код
