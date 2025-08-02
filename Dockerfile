@@ -14,6 +14,9 @@ RUN corepack enable
 # Устанавливаем corepack
 RUN yarn set version berry
 
+# Устанавливаем nodeLinker
+RUN yarn config set nodeLinker node-modules
+
 # Устанавливаем зависимости
 RUN yarn install
 
