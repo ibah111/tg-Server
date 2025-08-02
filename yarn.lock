@@ -2251,6 +2251,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"ansi-escape-sequences@npm:^6.2.2":
+  version: 6.2.4
+  resolution: "ansi-escape-sequences@npm:6.2.4"
+  dependencies:
+    array-back: "npm:^6.2.2"
+  peerDependencies:
+    "@75lb/nature": "*"
+  peerDependenciesMeta:
+    "@75lb/nature":
+      optional: true
+  checksum: 10/f09fda5c61578d9aaec9153b209287af1e6413171b6a8808d4ad2059a5ed3cce6101a0144c5e329bdda73ccf23b0be585abf7c7c92187c6f8ec5199a356cf79a
+  languageName: node
+  linkType: hard
+
 "ansi-escapes@npm:^4.2.1, ansi-escapes@npm:^4.3.2":
   version: 4.3.2
   resolution: "ansi-escapes@npm:4.3.2"
@@ -2351,6 +2365,13 @@ __metadata:
   version: 2.0.1
   resolution: "argparse@npm:2.0.1"
   checksum: 10/18640244e641a417ec75a9bd38b0b2b6b95af5199aa241b131d4b2fb206f334d7ecc600bd194861610a5579084978bfcbb02baa399dbe442d56d0ae5e60dbaef
+  languageName: node
+  linkType: hard
+
+"array-back@npm:^6.2.2":
+  version: 6.2.2
+  resolution: "array-back@npm:6.2.2"
+  checksum: 10/baae1e3a1687300a307d3bdf09715f6415e1099b5729d3d8e397309fb1e43d90b939d694602892172aaca7e0aeed38da89d04aa4951637d31c2a21350809e003
   languageName: node
   linkType: hard
 
@@ -2915,6 +2936,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cli-progress@npm:^3.8.2":
+  version: 3.12.0
+  resolution: "cli-progress@npm:3.12.0"
+  dependencies:
+    string-width: "npm:^4.2.3"
+  checksum: 10/a6a549919a7461f5e798b18a4a19f83154bab145d3ec73d7f3463a8db8e311388c545ace1105557760a058cc4999b7f28c9d8d24d9783ee2912befb32544d4b8
+  languageName: node
+  linkType: hard
+
 "cli-spinners@npm:^2.5.0":
   version: 2.9.0
   resolution: "cli-spinners@npm:2.9.0"
@@ -3033,6 +3063,13 @@ __metadata:
   version: 2.20.3
   resolution: "commander@npm:2.20.3"
   checksum: 10/90c5b6898610cd075984c58c4f88418a4fb44af08c1b1415e9854c03171bec31b336b7f3e4cefe33de994b3f12b03c5e2d638da4316df83593b9e82554e7e95b
+  languageName: node
+  linkType: hard
+
+"commander@npm:^6.1.0":
+  version: 6.2.1
+  resolution: "commander@npm:6.2.1"
+  checksum: 10/25b88c2efd0380c84f7844b39cf18510da7bfc5013692d68cdc65f764a1c34e6c8a36ea6d72b6620e3710a930cf8fab2695bdec2bf7107a0f4fa30a3ef3b7d0e
   languageName: node
   linkType: hard
 
@@ -3233,7 +3270,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"debug@npm:^4.4.0":
+"debug@npm:^4.3.7, debug@npm:^4.4.0":
   version: 4.4.1
   resolution: "debug@npm:4.4.1"
   dependencies:
@@ -4606,12 +4643,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hash-arg@npm:^1.0.9":
+  version: 1.0.9
+  resolution: "hash-arg@npm:1.0.9"
+  checksum: 10/270189b2ca57413d20c3d052b4d9f518e17bb2f808ec6bfa7961193093855b9c2a32364acd4bd06e9d578bb9204057f600e82bc72c1f8d7d5dae20b7f638ab5d
+  languageName: node
+  linkType: hard
+
 "hasown@npm:^2.0.2":
   version: 2.0.2
   resolution: "hasown@npm:2.0.2"
   dependencies:
     function-bind: "npm:^1.1.2"
   checksum: 10/7898a9c1788b2862cf0f9c345a6bec77ba4a0c0983c7f19d610c382343d4f98fa260686b225dfb1f88393a66679d2ec58ee310c1d6868c081eda7918f32cc70a
+  languageName: node
+  linkType: hard
+
+"homedir@npm:^0.6.0":
+  version: 0.6.0
+  resolution: "homedir@npm:0.6.0"
+  checksum: 10/2c14ca7e44a3e2211f36c7a303ad12fef461fcf99f7f96390a3ddfbcea25a3bfde050d0c2f45230a43d2f0b0e8af653f9f6a73fcaf4999691bf931c887c91a5b
   languageName: node
   linkType: hard
 
@@ -5724,6 +5775,21 @@ __metadata:
   languageName: node
   linkType: hard
 
+"list-it@npm:^1.3.3":
+  version: 1.3.13
+  resolution: "list-it@npm:1.3.13"
+  dependencies:
+    ansi-escape-sequences: "npm:^6.2.2"
+    debug: "npm:^4.3.7"
+    eastasianwidth: "npm:^0.2.0"
+    hash-arg: "npm:^1.0.9"
+    node-getopt: "github:takamin/node-getopt"
+  bin:
+    listit: bin/listit.js
+  checksum: 10/e4e3c14f9f23672a86b20e1de7ac201bbab303d2b0c1f30d7dff591400160cfcec138c55b0ec6498f05b31c16384adcf49af73935ab682666db0a1347d838361
+  languageName: node
+  linkType: hard
+
 "loader-runner@npm:^4.2.0":
   version: 4.3.0
   resolution: "loader-runner@npm:4.3.0"
@@ -5760,6 +5826,13 @@ __metadata:
   version: 4.6.2
   resolution: "lodash.merge@npm:4.6.2"
   checksum: 10/d0ea2dd0097e6201be083865d50c3fb54fbfbdb247d9cc5950e086c991f448b7ab0cdab0d57eacccb43473d3f2acd21e134db39f22dac2d6c9ba6bf26978e3d6
+  languageName: node
+  linkType: hard
+
+"lodash.throttle@npm:^4.1.1":
+  version: 4.1.1
+  resolution: "lodash.throttle@npm:4.1.1"
+  checksum: 10/9be9fb2ffd686c20543167883305542f4564062a5f712a40e8c6f2f0d9fd8254a6e9d801c2470b1b24e0cdf2ae83c1277b55aa0fb4799a2db6daf545f53820e1
   languageName: node
   linkType: hard
 
@@ -6393,6 +6466,13 @@ __metadata:
     encoding:
       optional: true
   checksum: 10/b24f8a3dc937f388192e59bcf9d0857d7b6940a2496f328381641cb616efccc9866e89ec43f2ec956bbd6c3d3ee05524ce77fe7b29ccd34692b3a16f237d6676
+  languageName: node
+  linkType: hard
+
+"node-getopt@github:takamin/node-getopt":
+  version: 0.3.3-forked-by-takamin
+  resolution: "node-getopt@https://github.com/takamin/node-getopt.git#commit=a94ecd2791f28b89108a001d5e5f51d632dbe671"
+  checksum: 10/3e2b5e1b2abc5293a7a7ff88c724a9cbffcb40dbc5fef320ebee8529039ddaaebb6341430aee1dd0ea412470984acb601055a717c7c8016e94dc58aa6239215f
   languageName: node
   linkType: hard
 
@@ -7375,6 +7455,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"sanitize-filename@npm:^1.6.3":
+  version: 1.6.3
+  resolution: "sanitize-filename@npm:1.6.3"
+  dependencies:
+    truncate-utf8-bytes: "npm:^1.0.0"
+  checksum: 10/1c162e2cffa797571221c3ed9fe796fa8c6eabb0812418b52a839e4fc63ab130093eb546ec39e1b94b8d3511c0d7de81db3e67906a7e76d7a7bcb6fbab4ed961
+  languageName: node
+  linkType: hard
+
 "sax@npm:^1.1.3, sax@npm:^1.2.4":
   version: 1.4.1
   resolution: "sax@npm:1.4.1"
@@ -7600,6 +7689,7 @@ __metadata:
     tsconfig-paths: "npm:^4.2.0"
     typescript: "npm:^5.4.3"
     umzug: "npm:^3.7.0"
+    ytdl: "npm:^1.4.1"
     ytdl-core: "npm:^4.11.5"
   languageName: unknown
   linkType: soft
@@ -7927,6 +8017,13 @@ __metadata:
   version: 1.1.0
   resolution: "streamsearch@npm:1.1.0"
   checksum: 10/612c2b2a7dbcc859f74597112f80a42cbe4d448d03da790d5b7b39673c1197dd3789e91cd67210353e58857395d32c1e955a9041c4e6d5bae723436b3ed9ed14
+  languageName: node
+  linkType: hard
+
+"streamspeed@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "streamspeed@npm:2.0.1"
+  checksum: 10/768d0ab4bf48e23c3a6dbd72c41a932ee5041df28e67246bd7b8fac79de0a447c5f1d1ce714a1c36f60e463e72bdf8108cf3dbe1a9bc99b9477b3d30057a0aa5
   languageName: node
   linkType: hard
 
@@ -8364,6 +8461,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"truncate-utf8-bytes@npm:^1.0.0":
+  version: 1.0.2
+  resolution: "truncate-utf8-bytes@npm:1.0.2"
+  dependencies:
+    utf8-byte-length: "npm:^1.0.1"
+  checksum: 10/366e47a0e22cc271d37eb4e62820453fb877784b55b37218842758b7aa1d402eedd0f8833cfb5d6f7a6cae1535d84289bd5e32c4ee962d2a86962fb7038a6983
+  languageName: node
+  linkType: hard
+
 "ts-api-utils@npm:^1.0.1":
   version: 1.4.3
   resolution: "ts-api-utils@npm:1.4.3"
@@ -8716,6 +8822,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"utf8-byte-length@npm:^1.0.1":
+  version: 1.0.5
+  resolution: "utf8-byte-length@npm:1.0.5"
+  checksum: 10/168edff8f7baca974b5bfb5256cebd57deaef8fbf2d0390301dd1009da52de64774d62f088254c94021e372147b6c938aa82f2318a3a19f9ebd21e48b7f40029
+  languageName: node
+  linkType: hard
+
 "util-deprecate@npm:^1.0.1":
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
@@ -9045,7 +9158,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ytdl-core@npm:^4.11.5":
+"ytdl-core@npm:^4.1.0, ytdl-core@npm:^4.11.5":
   version: 4.11.5
   resolution: "ytdl-core@npm:4.11.5"
   dependencies:
@@ -9053,5 +9166,24 @@ __metadata:
     miniget: "npm:^4.2.2"
     sax: "npm:^1.1.3"
   checksum: 10/2a5a4ddb58f546a9ec72a6b8fadc48944f49caf7a902e6e9e833fc7ab7009a906463c3e6b6c2c40af6172bada72bcae56af4f1564614d6a705f1a7257b21d0c6
+  languageName: node
+  linkType: hard
+
+"ytdl@npm:^1.4.1":
+  version: 1.4.1
+  resolution: "ytdl@npm:1.4.1"
+  dependencies:
+    chalk: "npm:^4.0.0"
+    cli-progress: "npm:^3.8.2"
+    commander: "npm:^6.1.0"
+    homedir: "npm:^0.6.0"
+    list-it: "npm:^1.3.3"
+    lodash.throttle: "npm:^4.1.1"
+    sanitize-filename: "npm:^1.6.3"
+    streamspeed: "npm:^2.0.1"
+    ytdl-core: "npm:^4.1.0"
+  bin:
+    ytdl: bin/ytdl.js
+  checksum: 10/0d520ac6da07f97513353aa942da90b9a04940714f765e5814f0900e19552e9e15d1e0d8740e32fdd7ffb386619ced53509e93b55e76e2105f31c0c82d79112b
   languageName: node
   linkType: hard
