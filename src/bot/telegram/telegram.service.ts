@@ -9,6 +9,7 @@ export default class TelegramService implements OnModuleInit {
   constructor(@InjectBot() private readonly bot: Telegraf) {}
 
   async onModuleInit() {
+    return;
     const message = 'Bot started!';
     await this.sendMessage({
       chatId: Number(ADMIN_ID),

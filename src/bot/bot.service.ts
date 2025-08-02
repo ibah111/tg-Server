@@ -57,6 +57,6 @@ export default class BotService {
   }
 
   async message(ctx: Context) {
-    await ctx.reply('Hello, world!');
+    console.log('message', ctx);
   }
 }

@@ -8,8 +8,6 @@ export class BotUpdate {
 
   @Start()
   async onStart(@Ctx() ctx: Context) {
-    console.log('onStart');
-
     await this.botService.onStart(ctx);
   }
 
@@ -25,7 +23,6 @@ export class BotUpdate {
 
   @Command('ollama')
   async ollama(@Ctx() ctx: Context) {
-    console.log('ollama command'.yellow);
     await this.botService.ollama(ctx);
   }
 
