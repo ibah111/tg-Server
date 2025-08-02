@@ -2,9 +2,9 @@ import { Module } from '@nestjs/common';
 import DatabaseModule from '../databases/database.module';
 import IpModule from './ip/ip.module';
 import { CacheModule } from './cache/cache.module';
-import { GptModule } from './gpt/gpt.module';
+import { OllamaModule } from './ollama/ollama.module';
 
 @Module({
-  imports: [DatabaseModule, IpModule, CacheModule, GptModule],
+  imports: [DatabaseModule, IpModule, CacheModule, OllamaModule],
 })
 export class ModuleOfModules {}

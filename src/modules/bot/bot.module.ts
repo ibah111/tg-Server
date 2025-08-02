@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TelegrafModule } from 'nestjs-telegraf';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { sessionMiddleWare } from 'src/shared/utils/sessionMiddleware';
+import { sessionMiddleWare } from 'src/shared/utils/session-middleware';
 import MinecraftUpdate from 'src/pages/minecraft/minecraft.update';
 
 @Module({
@@ -9,7 +9,7 @@ import MinecraftUpdate from 'src/pages/minecraft/minecraft.update';
     TelegrafModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: (config: ConfigService) => ({
-        token: config.get<string>('bot.token'),
+        token: config.get<string>('tokens.telegram'),
         middlewares: [sessionMiddleWare],
         include: [MinecraftUpdate],
       }),
