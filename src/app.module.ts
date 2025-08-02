@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ModuleOfModules } from './modules';
 import { PagesModule } from './pages/index.module';
-import { BotModule } from './modules/bot/bot.module';
+import { BotModule } from './bot/bot.module';
 import { ConfigModule } from '@nestjs/config';
 import getConfig from './shared/utils/get-config';
+import { YtdlModule } from './modules/ytdl/ytdl.module';
+import { OllamaModule } from './modules/ollama/ollama.module';
 
 @Module({
   imports: [
@@ -15,6 +17,8 @@ import getConfig from './shared/utils/get-config';
       envFilePath: '.env',
       isGlobal: true,
     }),
+    YtdlModule,
+    OllamaModule,
   ],
 })
 export class AppModule {}

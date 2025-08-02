@@ -3,7 +3,7 @@ import MinecractController from './minecraft.controller';
 import IpService from 'src/modules/ip/ip.service';
 import { MinecraftService } from './minecraft.service';
 import MinecraftUpdate from './minecraft.update';
-import { BotModule } from 'src/modules/bot/bot.module';
+import { BotModule } from 'src/bot/bot.module';
 
 @Module({
   imports: [BotModule],

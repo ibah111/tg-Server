@@ -3,6 +3,9 @@ import { TelegrafModule } from 'nestjs-telegraf';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { sessionMiddleWare } from 'src/shared/utils/session-middleware';
 import MinecraftUpdate from 'src/pages/minecraft/minecraft.update';
+import { BotUpdate } from './bot.update';
+import BotService from './bot.service';
+import TelegramModule from './telegram/telegram.module';
 
 @Module({
   imports: [
@@ -15,7 +18,9 @@ import MinecraftUpdate from 'src/pages/minecraft/minecraft.update';
       }),
       inject: [ConfigService],
     }),
+    TelegramModule,
   ],
   exports: [TelegrafModule],
+  providers: [BotUpdate, BotService],
 })
 export class BotModule {}

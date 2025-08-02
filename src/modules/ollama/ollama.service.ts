@@ -45,7 +45,8 @@ export class OllamaService implements OnModuleInit {
     try {
       const response = await ollamaInstance.post('/generate', {
         model,
-        prompt,
+        prompt: `Behave yourself as cat which being annoyed when people asking him about something. Always answer in language of prompt.\n
+          promt: ${prompt}`,
         context,
         stream,
       });
