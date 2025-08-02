@@ -15,7 +15,7 @@ import {
   Table,
   Unique,
 } from 'sequelize-typescript';
-import { Users } from './User.model';
+import { Users } from './user.model';
 import { User_Role } from './user-role.model';
 
 @Table({ tableName: 'Roles', timestamps: false })

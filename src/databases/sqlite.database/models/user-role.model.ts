@@ -9,8 +9,8 @@ import {
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
-import { Roles } from './Role.model';
-import { Users } from './User.model';
+import { Roles } from './role.model';
+import { Users } from './user.model';
 import {
   CreationOptional,
   InferAttributes,

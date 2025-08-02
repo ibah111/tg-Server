@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Users } from '../models/User.model';
+import { Users } from '../models/user.model';
 import { FindOptions } from 'sequelize';
 import { InjectModel } from '@nestjs/sequelize';
 

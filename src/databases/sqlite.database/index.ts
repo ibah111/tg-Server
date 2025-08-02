@@ -2,7 +2,7 @@ import { Global, Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { models } from './models';
 import { SqliteDatabaseSeed } from './seed';
-import { Users } from './models/User.model';
+import { Users } from './models/user.model';
 import UserRepository from './repository/user.repository';
 
 @Global()
@@ -12,7 +12,7 @@ import UserRepository from './repository/user.repository';
       name: 'local',
       dialect: 'sqlite',
       storage: 'database.sqlite',
-      models,
+      models: models,
     }),
     SequelizeModule.forFeature([Users], 'local'),
   ],

@@ -1,5 +1,7 @@
-import { Roles } from './Role.model';
-import { Users } from './User.model';
+import { Roles } from './role.model';
+import { Users } from './user.model';
 import { User_Role } from './user-role.model';
+import { ActionLog } from './action-log.model';
+import { ModelCtor } from 'sequelize-typescript';
 
-export const models = [Users, Roles, User_Role];
+export const models: ModelCtor[] = [Users, Roles, User_Role, ActionLog];
