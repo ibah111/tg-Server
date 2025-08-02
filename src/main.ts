@@ -8,6 +8,7 @@ import { SqliteDatabaseSeed } from './databases/sqlite.database/seed';
 import { AppModule } from './app.module';
 import 'colors';
 import { Logger } from '@nestjs/common';
+import { NODE_ENV } from './shared/consts/node-env';
 
 async function bootstrap() {
   const logger = new Logger(bootstrap.name);
@@ -30,6 +31,15 @@ async function bootstrap() {
   await app.get(SqliteDatabaseSeed).sync();
   await app.listen(3000, '0.0.0.0');
   logger.debug(`Server running on ${await app.getUrl()}/docs`);
+
+  switch (NODE_ENV) {
+    case 'development':
+      logger.verbose(`Server running in development mode`);
+      break;
+    case 'production':
+      logger.error(`Server running in production mode`);
+      break;
+  }
 
   process.on('SIGINT', async () => {
     logger.debug('Received SIGINT signal');
