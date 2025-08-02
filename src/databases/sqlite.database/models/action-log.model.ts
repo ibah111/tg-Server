@@ -1,22 +1,22 @@
 import {
   Model,
-  CreationOptional,
-  NonAttribute,
-  ForeignKey as FK,
-  BelongsTo,
-  InferAttributes,
-  InferCreationAttributes,
-} from 'sequelize';
-import {
   Table,
   AutoIncrement,
   PrimaryKey,
   Column,
   DataType,
   AllowNull,
-  ForeignKey,
+  ForeignKey as FKDecorator,
 } from 'sequelize-typescript';
-import { Users } from './User.model';
+import { Users } from './user.model';
+import {
+  BelongsTo,
+  CreationOptional,
+  ForeignKey as FK,
+  InferAttributes,
+  InferCreationAttributes,
+  NonAttribute,
+} from 'sequelize';
 
 export enum Actions {
   Registred = 1,
@@ -48,7 +48,7 @@ export class ActionLog extends Model<
   @Column(DataType.STRING)
   new_value: string | null;
 
-  @ForeignKey(() => Users)
+  @FKDecorator(() => Users)
   @AllowNull(false)
   @Column(DataType.INTEGER)
   user: number;
