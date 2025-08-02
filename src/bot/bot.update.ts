@@ -3,7 +3,7 @@ import { Context } from 'telegraf';
 import BotService from './bot.service';
 
 @Update()
-export class BotUpdate {
+export default class BotUpdate {
   constructor(private readonly botService: BotService) {}
 
   @Start()
