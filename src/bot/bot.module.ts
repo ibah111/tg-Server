@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TelegrafModule } from 'nestjs-telegraf';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { sessionMiddleWare } from 'src/shared/utils/session-middleware';
-import BotUpdate from './bot.update';
+import { BotUpdate } from './bot.update';
 import BotService from './bot.service';
 import TelegramModule from './telegram/telegram.module';
 
@@ -13,13 +13,13 @@ import TelegramModule from './telegram/telegram.module';
       useFactory: (config: ConfigService) => ({
         token: config.get<string>('tokens.telegram'),
         middlewares: [sessionMiddleWare],
-        include: [BotUpdate],
+        //include: [BotUpdate], <== Глушит провайдера
       }),
       inject: [ConfigService],
     }),
     TelegramModule,
   ],
   exports: [TelegrafModule],
-  providers: [BotService],
+  providers: [BotService, BotUpdate, BotService],
 })
 export class BotModule {}
