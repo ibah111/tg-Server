@@ -169,7 +169,7 @@ export class PingMinecraftServerResponse {
   time: string;
 }
 
-export class GetIpResponce {
+export class GetIpResponce extends NetResult {
   @ApiProperty({
     description: 'Local ip',
     example: '192.168.*.***:25565',

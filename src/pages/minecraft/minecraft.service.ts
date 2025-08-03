@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import IpService from 'src/modules/ip/ip.service';
-import { PingMinecraftServerDto } from './dto/minecraft.dto';
+import { GetIpResponce, PingMinecraftServerDto } from './dto/minecraft.dto';
 
 @Injectable()
 export class MinecraftService {
   constructor(private readonly ipService: IpService) {}
 
-  async getMinecraftServerIp() {
+  async getMinecraftServerIp(): Promise<GetIpResponce | string> {
     return this.ipService.getIp();
   }
 

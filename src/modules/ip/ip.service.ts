@@ -4,9 +4,11 @@ import ip from 'ip';
 import util from 'util';
 import net from 'net';
 import {
+  GetIpResponce,
   NetResult,
   PingMinecraftServerResponse,
 } from 'src/pages/minecraft/dto/minecraft.dto';
+import { minecraft_settings } from 'src/shared/json';
 
 @Injectable()
 export default class IpService {
@@ -76,6 +78,7 @@ export default class IpService {
     host: string,
     port: number,
   ): Promise<PingMinecraftServerResponse> {
+    this.logger.log(`Pinging minecraft server ${host}:${port}`);
     const start = performance.now();
     return new Promise((resolve, reject) => {
       const client = net.createConnection({ host, port }, () => {
@@ -143,18 +146,31 @@ export default class IpService {
     });
   }
 
-  public async getIp(command = 'curl ip-adresim.app') {
-    const port = 25565;
-    const execProm = util.promisify(exec);
-    const public_ip =
-      (await execProm(command)).stdout.replace('\n', '') + `:${port}`;
-    const local_ip = ip.address() + `:${port}`;
-    const domain_name = 'ibahbalezin.ddns.net';
-    const data = {
-      local_ip,
-      public_ip,
-      domain_connect: `${domain_name}:${port}`,
-    };
-    return data;
+  public async getIp(): Promise<GetIpResponce | string> {
+    try {
+      const command = 'curl ip-adresim.app';
+      const port = minecraft_settings.port;
+      const execProm = util.promisify(exec);
+      const public_ip =
+        (await execProm(command)).stdout.replace('\n', '') + `:${port}`;
+      const local_ip: string = ip.address();
+
+      const { result } = await this.pingMinecraftServer(
+        local_ip,
+        Number(minecraft_settings.port),
+      );
+
+      const domain_name = 'ibahbalezin.ddns.net';
+      const data: GetIpResponce = {
+        local_ip: `${local_ip}:${port}`,
+        public_ip,
+        domain_connect: `${domain_name}:${port}`,
+        ...result,
+      };
+      return data;
+    } catch (error) {
+      this.logger.error('Failed to get ip', error);
+      return 'Failed to get ip. Server probably shutdowned';
+    }
   }
 }
