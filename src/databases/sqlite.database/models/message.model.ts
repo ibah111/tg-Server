@@ -2,7 +2,6 @@ import {
   CreationOptional,
   InferAttributes,
   InferCreationAttributes,
-  Model,
 } from 'sequelize';
 import {
   DataType,
@@ -10,6 +9,7 @@ import {
   AutoIncrement,
   PrimaryKey,
   Table,
+  Model,
 } from 'sequelize-typescript';
 import { SqliteTablesName } from '../tables-name.enum';
 
