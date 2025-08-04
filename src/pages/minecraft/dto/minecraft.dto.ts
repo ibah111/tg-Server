@@ -43,15 +43,6 @@ export class ForgeData {
     example: 0,
   })
   fmlNetworkVersion: number;
-
-  /**
-   * @deprecated mutred for a reason
-   */
-  // @ApiProperty({
-  //   description: 'D (forge trash | useless)',
-  //   example: '',
-  // })
-  // d: string;
 }
 
 export class Player {
