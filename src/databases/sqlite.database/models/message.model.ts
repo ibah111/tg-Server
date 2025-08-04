@@ -11,7 +11,7 @@ import {
   Table,
   Model,
 } from 'sequelize-typescript';
-import { SqliteTablesName } from '../tables-name.enum';
+import { SqliteTablesName } from '../../../shared/enums/tables-name.enum';
 
 @Table({
   tableName: SqliteTablesName.MESSAGES,

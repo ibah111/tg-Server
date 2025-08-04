@@ -13,7 +13,7 @@ import {
   Table,
   Unique,
 } from 'sequelize-typescript';
-import { SqliteTablesName } from '../tables-name.enum';
+import { SqliteTablesName } from '../../../shared/enums/tables-name.enum';
 
 @Table({ tableName: SqliteTablesName.USERS })
 export class Users extends Model<

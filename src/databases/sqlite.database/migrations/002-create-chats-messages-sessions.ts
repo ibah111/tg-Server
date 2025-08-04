@@ -1,6 +1,6 @@
 import { DataTypes, QueryInterface } from 'sequelize';
 import { MigrationFn } from 'umzug';
-import { SqliteTablesName } from '../tables-name.enum';
+import { SqliteTablesName } from '../../../shared/enums/tables-name.enum';
 
 export const up: MigrationFn<QueryInterface> = async ({ context }) =>
   await context.sequelize.transaction((t) =>

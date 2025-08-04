@@ -11,7 +11,7 @@ import {
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
-import { SqliteTablesName } from '../tables-name.enum';
+import { SqliteTablesName } from '../../../shared/enums/tables-name.enum';
 
 @Table({ tableName: SqliteTablesName.CHATS })
 export class Chats extends Model<

@@ -9,7 +9,7 @@ import {
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
-import { SqliteTablesName } from '../tables-name.enum';
+import { SqliteTablesName } from '../../../shared/enums/tables-name.enum';
 import { Roles } from './role.model';
 import { Users } from './user.model';
 import {

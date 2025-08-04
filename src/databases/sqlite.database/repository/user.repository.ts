@@ -14,6 +14,10 @@ export default class UserRepository {
     return await this.modelUser.create(user);
   }
 
+  async findById(id: number) {
+    return await this.modelUser.findByPk(id);
+  }
+
   async findAll(name?: string) {
     const options: FindOptions = {};
     if (name) {
