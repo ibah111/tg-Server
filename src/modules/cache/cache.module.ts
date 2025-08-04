@@ -11,7 +11,7 @@ import { CacheOptions } from './cache.interface';
       useFactory: () => {
         const options: CacheOptions = {
           maxSize: 100 * 1024 * 1024, // 100MB
-          defaultTTL: 1, // 1 час
+          defaultTTL: 1, // 1 минута (60 секунд)
         };
         return new CacheService(options);
       },

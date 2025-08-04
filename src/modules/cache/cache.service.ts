@@ -11,10 +11,21 @@ export class CacheService implements OnModuleInit {
 
   constructor(options: CacheOptions = {}) {
     this.maxSize = options.maxSize || 100 * 1024 * 1024; // 100MB по умолчанию
-    this.defaultTTL = (options.defaultTTL || 1) * 60 * 60 * 1000; // 1 час по умолчанию
+    this.defaultTTL = (options.defaultTTL || 1) * 60 * 1000; // 60 секунд по умолчанию
   }
 
   onModuleInit() {
+    // Добавляем тестовый объект по умолчанию
+    this.set('test_key', {
+      message: 'Это тестовый объект кэша',
+      timestamp: new Date().toISOString(),
+      data: {
+        id: 1,
+        name: 'Test Object',
+        description: 'Объект для тестирования кэша'
+      }
+    });
+
     // Запускаем очистку каждую минуту
     this.cleanupInterval = setInterval(() => this.cleanup(), 60000);
   }
@@ -64,7 +75,7 @@ export class CacheService implements OnModuleInit {
 
     const cacheItem: CacheItem<T> = {
       value,
-      ttl: ttl ? ttl * 60 * 60 * 1000 : this.defaultTTL,
+      ttl: ttl ? ttl * 60 * 1000 : this.defaultTTL, // TTL в секундах
       createdAt: Date.now(),
     };
 
@@ -118,7 +129,7 @@ export class CacheService implements OnModuleInit {
 
     const cacheItem: CacheItem<T> = {
       value,
-      ttl: ttl ? ttl * 60 * 60 * 1000 : this.defaultTTL,
+      ttl: ttl ? ttl * 60 * 1000 : this.defaultTTL, // TTL в секундах
       createdAt: Date.now(),
     };
 
