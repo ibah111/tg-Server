@@ -2,26 +2,17 @@ import {
   CreationOptional,
   InferAttributes,
   InferCreationAttributes,
-  Model,
 } from 'sequelize';
 import {
   AutoIncrement,
   Column,
   DataType,
+  Model,
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
 import { SqliteTablesName } from '../tables-name.enum';
 
-/**
- * chat: {
-    id: 745387960,
-    first_name: 'Иван',
-    last_name: 'Балезин',
-    username: 'Nbahvc',
-    type: 'private'
-  },
- */
 @Table({ tableName: SqliteTablesName.CHATS })
 export class Chats extends Model<
   InferAttributes<Chats>,
