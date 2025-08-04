@@ -1,11 +1,12 @@
 import { DataTypes, QueryInterface } from 'sequelize';
 import { MigrationFn } from 'umzug';
+import { SqliteTablesName } from '../tables-name.enum';
 
 export const up: MigrationFn<QueryInterface> = async ({ context }) =>
   await context.sequelize.transaction((t) =>
     Promise.all([
       context.createTable(
-        'Users',
+        SqliteTablesName.USERS,
         {
           id: {
             type: DataTypes.INTEGER,
@@ -13,15 +14,32 @@ export const up: MigrationFn<QueryInterface> = async ({ context }) =>
             primaryKey: true,
             autoIncrement: true,
           },
-          id_telegram: {
+          telegram_id: {
             type: DataTypes.INTEGER,
             allowNull: false,
           },
           username: {
             type: DataTypes.STRING,
           },
-          ban_status: {
+          is_bot: {
             type: DataTypes.BOOLEAN,
+            allowNull: false,
+          },
+          first_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
+          last_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
+          language_code: {
+            type: DataTypes.STRING,
+            allowNull: false,
+          },
+          is_premium: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
           },
           createdAt: {
             type: DataTypes.DATE,
@@ -37,7 +55,7 @@ export const up: MigrationFn<QueryInterface> = async ({ context }) =>
         { transaction: t },
       ),
       context.createTable(
-        'Roles',
+        SqliteTablesName.ROLES,
         {
           id: {
             type: DataTypes.INTEGER,
@@ -51,7 +69,7 @@ export const up: MigrationFn<QueryInterface> = async ({ context }) =>
         { transaction: t },
       ),
       context.createTable(
-        'Users_Roles',
+        SqliteTablesName.USER_ROLES,
         {
           id: {
             type: DataTypes.INTEGER,

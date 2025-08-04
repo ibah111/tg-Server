@@ -9,6 +9,7 @@ import {
   PrimaryKey,
   Table,
 } from 'sequelize-typescript';
+import { SqliteTablesName } from '../tables-name.enum';
 import { Roles } from './role.model';
 import { Users } from './user.model';
 import {
@@ -16,7 +17,7 @@ import {
   InferAttributes,
   InferCreationAttributes,
 } from 'sequelize';
-@Table({ tableName: 'user', timestamps: false })
+@Table({ tableName: SqliteTablesName.USER_ROLES, timestamps: false })
 export class User_Role extends Model<
   InferAttributes<User_Role>,
   InferCreationAttributes<User_Role>

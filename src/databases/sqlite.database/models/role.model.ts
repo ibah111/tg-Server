@@ -17,8 +17,9 @@ import {
 } from 'sequelize-typescript';
 import { Users } from './user.model';
 import { User_Role } from './user-role.model';
+import { SqliteTablesName } from '../tables-name.enum';
 
-@Table({ tableName: 'Roles', timestamps: false })
+@Table({ tableName: SqliteTablesName.ROLES, timestamps: false })
 export class Roles extends Model<
   InferAttributes<Roles>,
   InferCreationAttributes<Roles>

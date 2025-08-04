@@ -2,55 +2,48 @@ import {
   CreationOptional,
   InferAttributes,
   InferCreationAttributes,
+  Model,
 } from 'sequelize';
 import {
   AutoIncrement,
   Column,
   DataType,
-  AllowNull,
-  Model,
   PrimaryKey,
   Table,
-  Unique,
 } from 'sequelize-typescript';
 import { SqliteTablesName } from '../tables-name.enum';
 
-@Table({ tableName: SqliteTablesName.USERS })
-export class Users extends Model<
-  InferAttributes<Users>,
-  InferCreationAttributes<Users>
+/**
+ * chat: {
+    id: 745387960,
+    first_name: 'Иван',
+    last_name: 'Балезин',
+    username: 'Nbahvc',
+    type: 'private'
+  },
+ */
+@Table({ tableName: SqliteTablesName.CHATS })
+export class Chats extends Model<
+  InferAttributes<Chats>,
+  InferCreationAttributes<Chats>
 > {
   @AutoIncrement
   @PrimaryKey
   @Column(DataType.INTEGER)
   id: CreationOptional<number>;
 
-  @Unique(true)
-  @AllowNull(false)
   @Column(DataType.INTEGER)
-  telegram_id: number;
+  telegram_chat_id: number;
 
-  @AllowNull(false)
-  @Column(DataType.BOOLEAN)
-  is_bot: boolean;
-
-  @AllowNull(true)
   @Column(DataType.STRING)
   first_name: string;
 
-  @AllowNull(true)
   @Column(DataType.STRING)
   last_name: string;
 
-  @AllowNull(true)
   @Column(DataType.STRING)
   username: string;
 
-  @AllowNull(true)
   @Column(DataType.STRING)
-  language_code: string;
-
-  @AllowNull(false)
-  @Column(DataType.BOOLEAN)
-  is_premium: boolean;
+  type: string;
 }
