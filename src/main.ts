@@ -41,7 +41,7 @@ async function bootstrap() {
       );
       break;
     case 'production':
-      logger.error(
+      logger.warn(
         `Server running in production mode, ollama url: ${ollamaUrl}`,
       );
       break;
