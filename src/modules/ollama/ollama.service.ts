@@ -12,6 +12,8 @@ export class OllamaService {
 
   constructor() {}
 
+  endpoint = (path: string) => `/api/${path}`;
+
   throwError(error: any) {
     this.logger.error('Error getting tags', error);
     console.error(error.response?.data || error.message);
@@ -22,7 +24,7 @@ export class OllamaService {
 
   async tags() {
     try {
-      const response = await ollamaInstance.get('/tags');
+      const response = await ollamaInstance.get(this.endpoint('tags'));
       return response.data;
     } catch (error) {
       this.throwError(error);
@@ -32,7 +34,7 @@ export class OllamaService {
   async generate(dto: OllamaGenerateInput): Promise<OllamaGenerateOutput> {
     const { model, prompt, context, stream } = dto;
     try {
-      const response = await ollamaInstance.post('/generate', {
+      const response = await ollamaInstance.post(this.endpoint('generate'), {
         model,
         prompt,
         context,
