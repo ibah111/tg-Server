@@ -20,6 +20,7 @@ export const up: MigrationFn<QueryInterface> = async ({ context }) =>
           },
           username: {
             type: DataTypes.STRING,
+            allowNull: true,
           },
           is_bot: {
             type: DataTypes.BOOLEAN,
@@ -27,15 +28,15 @@ export const up: MigrationFn<QueryInterface> = async ({ context }) =>
           },
           first_name: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
           },
           last_name: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
           },
           language_code: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
           },
           is_premium: {
             type: DataTypes.BOOLEAN,

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Users } from '../models/user.model';
-import { FindOptions } from 'sequelize';
+import { FindOptions, InferCreationAttributes } from 'sequelize';
 import { InjectModel } from '@nestjs/sequelize';
 
 @Injectable()
@@ -10,7 +10,7 @@ export default class UserRepository {
     private readonly modelUser: typeof Users,
   ) {}
 
-  async createUser(user: Users) {
+  async createUser(user: InferCreationAttributes<Users>) {
     return await this.modelUser.create(user);
   }
 

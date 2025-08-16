@@ -1,15 +1,9 @@
+import { InferAttributes, InferCreationAttributes } from 'sequelize';
 import {
-  CreationOptional,
-  InferAttributes,
-  InferCreationAttributes,
-} from 'sequelize';
-import {
-  AutoIncrement,
   Column,
   DataType,
   AllowNull,
   Model,
-  PrimaryKey,
   Table,
   Unique,
 } from 'sequelize-typescript';
@@ -20,11 +14,6 @@ export class Users extends Model<
   InferAttributes<Users>,
   InferCreationAttributes<Users>
 > {
-  @AutoIncrement
-  @PrimaryKey
-  @Column(DataType.INTEGER)
-  id: CreationOptional<number>;
-
   @Unique(true)
   @AllowNull(false)
   @Column(DataType.INTEGER)

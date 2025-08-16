@@ -17,3 +17,15 @@ export const up: MigrationFn<QueryInterface> = async ({ context }) =>
       ),
     ]),
   );
+
+export const down: MigrationFn<QueryInterface> = async ({ context }) =>
+  await context.sequelize.transaction((t) =>
+    Promise.all([
+      context.sequelize.models.Roles.destroy({
+        where: {
+          id: [1, 2, 3, 4],
+        },
+        transaction: t,
+      }),
+    ]),
+  );

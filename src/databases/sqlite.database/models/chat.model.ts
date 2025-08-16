@@ -1,15 +1,11 @@
+import { InferAttributes, InferCreationAttributes } from 'sequelize';
 import {
-  CreationOptional,
-  InferAttributes,
-  InferCreationAttributes,
-} from 'sequelize';
-import {
-  AutoIncrement,
+  Model,
+  AllowNull,
   Column,
   DataType,
-  Model,
-  PrimaryKey,
   Table,
+  Unique,
 } from 'sequelize-typescript';
 import { SqliteTablesName } from '../../../shared/enums/tables-name.enum';
 
@@ -18,11 +14,8 @@ export class Chats extends Model<
   InferAttributes<Chats>,
   InferCreationAttributes<Chats>
 > {
-  @AutoIncrement
-  @PrimaryKey
-  @Column(DataType.INTEGER)
-  id: CreationOptional<number>;
-
+  @Unique(true)
+  @AllowNull(false)
   @Column(DataType.INTEGER)
   telegram_chat_id: number;
 
