@@ -9,6 +9,8 @@ import {
   PingMinecraftServerResponse,
 } from 'src/pages/minecraft/dto/minecraft.dto';
 import { minecraft_settings } from 'src/shared/json';
+import { NODE_ENV } from 'src/shared/consts/node-env';
+import { baseUrl } from 'src/shared/utils/axios-instance';
 
 @Injectable()
 export default class IpService {
@@ -153,7 +155,8 @@ export default class IpService {
       const execProm = util.promisify(exec);
       const public_ip =
         (await execProm(command)).stdout.replace('\n', '') + `:${port}`;
-      const local_ip: string = ip.address();
+      const local_ip: string =
+        NODE_ENV === 'production' ? baseUrl() : ip.address();
 
       const { result } = await this.pingMinecraftServer(
         local_ip,

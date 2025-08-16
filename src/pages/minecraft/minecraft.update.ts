@@ -10,10 +10,14 @@ export default class MinecraftUpdate {
   async getIp(@Ctx() ctx: Context): Promise<void> {
     const first_message = await ctx.reply('Pinging minecraft server...');
     const data = await this.service.getMinecraftServerIp();
+    if (data) {
+      const reply = '```\n' + JSON.stringify(data, null, 2) + '\n```';
+      await ctx.reply(reply, {
+        parse_mode: 'MarkdownV2',
+      });
+    } else if (typeof data === 'string') {
+      await ctx.reply(data);
+    }
     await ctx.deleteMessage(Number(first_message.message_id));
-    const reply = '```\n' + JSON.stringify(data, null, 2) + '\n```';
-    await ctx.reply(reply, {
-      parse_mode: 'MarkdownV2',
-    });
   }
 }
