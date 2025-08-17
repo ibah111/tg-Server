@@ -3,8 +3,9 @@ import {
   InternalServerErrorException,
   Logger,
 } from '@nestjs/common';
-import { OllamaGenerateInput, OllamaGenerateOutput } from './dto/gpt.dto';
+import { OllamaGenerateInput, OllamaGenerateOutput } from './dto/generate.dto';
 import { ollamaInstance } from 'src/shared/utils/axios-instance';
+import { TagsResponce } from './dto/tags.dto';
 
 @Injectable()
 export class OllamaService {
@@ -22,7 +23,7 @@ export class OllamaService {
     );
   }
 
-  async tags() {
+  async tags(): Promise<TagsResponce> {
     try {
       const response = await ollamaInstance.get(this.endpoint('tags'));
       return response.data;

@@ -98,8 +98,14 @@ export default class BotService {
   }
 
   async ollama(ctx: Context) {
-    ctx.reply('Resetting prev session...');
+    ctx.reply('Прекращаю предыдущую сессию...');
 
+    const session = await this.ollamaService.tags();
+    ctx.reply('Какую модель для диалога выбрать?', {
+      reply_markup: {
+        inline_keyboard: [[{ text: '1', callback_data: '1' }]],
+      },
+    });
     const custom_ctx = ctx as CustomContext;
 
     const prompt = custom_ctx.payload;
