@@ -97,32 +97,52 @@ export default class BotService {
     await ctx.reply(helpMessage);
   }
 
-  async ollama(ctx: Context) {
+  public async ollama(ctx: Context) {
     ctx.reply('Прекращаю предыдущую сессию...');
 
     const session = await this.ollamaService.tags();
+
     ctx.reply('Какую модель для диалога выбрать?', {
       reply_markup: {
-        inline_keyboard: [[{ text: '1', callback_data: '1' }]],
+        inline_keyboard: session.models.map((model) => [
+          { text: model.name, callback_data: model.name },
+        ]),
       },
     });
-    const custom_ctx = ctx as CustomContext;
+  }
 
-    const prompt = custom_ctx.payload;
-
-    const response = await this.ollamaService.generate({
-      model: 'llama3',
-      prompt,
+  async onModelSelect(ctx: Context) {
+    const modelName = ctx.callbackQuery['data'];
+    await ctx.answerCbQuery();
+    if ('message' in ctx.callbackQuery) {
+      await ctx.deleteMessage(ctx.callbackQuery.message.message_id);
+    }
+    await ctx.reply(`Вы выбрали модель: ${modelName}`);
+    const ollama_reply = await this.ollamaService.generate({
+      model: modelName,
+      prompt: '',
       stream: false,
     });
-
-    const reply = response.response;
-
-    await ctx.reply(reply);
+    ollama_reply.context;
+    ctx.reply(ollama_reply.response);
   }
 
   async message(ctx: Context) {
-    this.logger.log('onMessage'.yellow, ctx.from.username);
-    await this.checkCtx(ctx);
+    console.log('message'.yellow, ctx.chat);
+    const chat_type = ctx.chat.type;
+
+    //logic for private chat
+    if (chat_type === 'private') {
+      //logic
+      const last_context: number[] = [];
+      return;
+      const ollama_reply = await this.ollamaService.generate({
+        model: 'llama3',
+        prompt: '',
+        stream: false,
+        context: last_context,
+      });
+      ctx.reply(ollama_reply.response);
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { Command, Ctx, On, Start, Update } from 'nestjs-telegraf';
+import { Action, Command, Ctx, On, Start, Update } from 'nestjs-telegraf';
 import { Context } from 'telegraf';
 import BotService from './bot.service';
 
@@ -24,6 +24,11 @@ export class BotUpdate {
   @Command('ollama')
   async ollama(@Ctx() ctx: Context) {
     await this.botService.ollama(ctx);
+  }
+
+  @Action(/.*/)
+  async onModelSelect(@Ctx() ctx: Context) {
+    await this.botService.onModelSelect(ctx);
   }
 
   @On('message')
