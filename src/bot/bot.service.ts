@@ -18,7 +18,7 @@ export default class BotService {
     private readonly chatRepository: ChatRepository,
   ) {}
 
-  private async checkCtx(ctx: Context) {
+  public async checkCtx(ctx: Context) {
     const ctx_from = ctx.from;
     const ctx_chat = ctx.chat;
 

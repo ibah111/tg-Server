@@ -1,16 +1,5 @@
-import {
-  CreationOptional,
-  InferAttributes,
-  InferCreationAttributes,
-} from 'sequelize';
-import {
-  AutoIncrement,
-  Column,
-  DataType,
-  Model,
-  PrimaryKey,
-  Table,
-} from 'sequelize-typescript';
+import { InferAttributes, InferCreationAttributes } from 'sequelize';
+import { Column, DataType, Model, Table } from 'sequelize-typescript';
 import { SqliteTablesName } from '../../../shared/enums/tables-name.enum';
 
 @Table({
@@ -20,8 +9,9 @@ export class Sessions extends Model<
   InferAttributes<Sessions>,
   InferCreationAttributes<Sessions>
 > {
-  @AutoIncrement
-  @PrimaryKey
-  @Column(DataType.INTEGER)
-  id: CreationOptional<number>;
+  @Column(DataType.STRING)
+  model: string;
+
+  @Column(DataType.ARRAY(DataType.INTEGER))
+  context: number[];
 }

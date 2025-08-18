@@ -15,7 +15,11 @@ export default class UserRepository {
   }
 
   async findById(id: number) {
-    return await this.modelUser.findByPk(id);
+    return await this.modelUser.findOne({
+      where: {
+        telegram_id: id,
+      },
+    });
   }
 
   async findAll(name?: string) {

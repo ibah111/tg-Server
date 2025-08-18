@@ -5,4 +5,5 @@ export enum SqliteTablesName {
   CHATS = 'chats',
   MESSAGES = 'messages',
   SESSIONS = 'sessions',
+  USER_SESSIONS = 'user_sessions',
 }
